@@ -1,0 +1,5 @@
+<h1>ジャンル編集</h1>
+<%= form_for(@genre, url: {controller: "genres", action: "update"}) do |f|  %>
+<p>ジャンル</p><%= f.text_field :name %><label><%= f.radio_button :is_active, "true" %>有効</label><label><%= f.radio_button :is_active, "false" %>無効</label><%= f.submit '変更を保存する' %>
+<% end %>
+
