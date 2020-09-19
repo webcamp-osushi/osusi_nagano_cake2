@@ -1,10 +1,10 @@
 <div class="container" >
 	<div class="row" >
-		<div class="col-lg-12" >
+		<div class="col-lg-10" >
 			<h1>商品一覧</h1>
-			<button type="button" class="btn rounded-circle p-0" style="width:2rem;height:2rem;"><%= link_to "＋", new_admins_product_path %></button>
-			<h3><%= link_to "ジャンル一覧", admins_genres_path %></h3>
-
+			<div class="text-right">
+			<button type="button" class="btn btn-circle"><%= link_to "＋", new_admins_product_path %></button>
+		    </div>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -31,6 +31,7 @@
 					<% end %>
 				</tbody>
 			</table>
+			<h3><%= link_to "ジャンル一覧", admins_genres_path %></h3>
 		</div>
 	</div>
 </div>

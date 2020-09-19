@@ -1,8 +1,12 @@
 class Admins::GenresController < Admins::Base
 	def create
-		genre = Genre.new(genre_params)
-		genre.save
-		redirect_to("/admins/genres")
+		@genre = Genre.new(genre_params)
+		@genres = Genre.all
+		if @genre.save
+			redirect_to("/admins/genres")
+		else
+			render "index"
+		end
 	end
 
 	def index
@@ -16,8 +20,11 @@ class Admins::GenresController < Admins::Base
 
 	def update
 		@genre = Genre.find(params[:id])
-		@genre.update(genre_params)
-		redirect_to("/admins/genres")
+		if @genre.update(genre_params)
+			redirect_to("/admins/genres")
+		else
+			render "edit"
+		end
 	end
 
 	private
