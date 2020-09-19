@@ -1,0 +1,29 @@
+<p class="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <section class="customer-index">
+        <h2>会員一覧</h2>
+      　<table class="table table-striped">
+          <thead>
+            <tr>
+              <th>会員ID　</th>
+              <th>氏名　　　　</th>
+              <th>メールアドレス　</th>
+              <th>ステータス　</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- customer each文挿入 -->
+              <tr>
+                <td>custemer.id</td>
+                <td>customer.last_name and customer_first_name</td>
+                <td>customer.email</td>
+                <td>customer.is_deleted</td>
+              </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</div>

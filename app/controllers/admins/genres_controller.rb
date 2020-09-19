@@ -1,2 +1,2 @@
-class Admins::GenresController < Admin::Base
+class Admins::GenresController < Admins::Base
 end
