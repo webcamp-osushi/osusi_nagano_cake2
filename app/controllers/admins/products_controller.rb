@@ -9,17 +9,15 @@ class Admins::ProductsController < Admins::Base
 	def create
 		product = Product.new(product_params)
 		product.save
-		redirect_to admins_product_path(product)
+		redirect_to admins_product_path(product.id)
 	end
 
 	def index
-		# @products = Product.all
 		@products = Product.includes(:genre)
 	end
 
 	def show
 		@product = Product.find(params[:id])
-		@genre = Genre.find(@product.id)
 	end
 
 	def edit

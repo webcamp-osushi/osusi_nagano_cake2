@@ -1,19 +1,24 @@
 <%= link_to "一覧に戻る", admins_products_path %>
-<h1>商品詳細</h1>
-<div class= "img_area">
-	<%= image_tag attachment_url(@product, :image, :fill, 300, 300, format: "jpg", fallback: "no-image-mini.jpg") %>
+<div class ="container">
+	<div class="row">
+		<div class="col-lg-10">
+			<h1>商品詳細</h1>
+			<div class= "img_area">
+				<%= image_tag attachment_url(@product, :image, :fill, 300, 300, format: "jpg", fallback: "no-img.jpg") %>
+			</div>
+			<div class= "product_text_area">
+				<p>商品名</p><%= @product.name %>
+				<p>商品説明</p><%= @product.introduction %>
+				<p>ジャンル</p><%= @product.genre.name %>
+				<p>税込価格(税抜き価格)</p><%= @product.price %>円
+				<p>販売ステータス</p><% if @product.is_active == false %>販売停止中
+				<% else %>販売中
+				<% end %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<button class="btn btn-primary"><%= link_to "編集する", edit_admins_product_path(@product), :style=>"color:white;" %></button>
+		</div>
+	</div>
 </div>
-<div class= "product_text_area">
-	<p>商品名</p><%= @product.name %>
-	<p>商品説明</p><%= @product.introduction %>
-	<p>ジャンル</p><%= @genre.name %>
-	<p>税込価格(税抜き価格)</p><%= @product.price %>円
-	<p>販売ステータス</p><% if @product.is_active == false %>販売停止中
-	<% else %>販売中
-	<% end %>
-</div>
-
-<div>
-	<%= link_to "編集する", edit_admins_product_path(@product) %>
-</div>
-

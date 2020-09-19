@@ -1,32 +1,38 @@
-<h1>ジャンル一覧・追加</h1>
-<h3><%= link_to "商品一覧", admins_products_path %></h3>
-<%= form_for(@genre, url: {controller: "genres", action: "create"}) do |f| %>
-<p>ジャンル</p><%= f.text_field :name %><label><%= f.radio_button :is_active, "true" %>有効</label><label><%= f.radio_button :is_active, "false" %>無効</label><%= f.submit '追加' %>
-<% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-10">
+			<h1>ジャンル一覧・追加</h1>
+			<h3><%= link_to "商品一覧", admins_products_path %></h3>
+			<%= form_for(@genre, url: {controller: "genres", action: "create"}) do |f| %>
+			<p>ジャンル</p><%= f.text_field :name %><label><%= f.radio_button :is_active, "true" %>有効</label><label><%= f.radio_button :is_active, "false" %>無効</label><button class="btn btn-primary">追加</button>
+			<% end %>
 
-<h3>ジャンル一覧</h3>
-<table>
-	<thead>
-		<tr>
-			<th>ジャンル</th>
-			<th>状態</th>
-			<th></th>
-		</tr>
-	</thead>
+			<h3>ジャンル一覧</h3>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>ジャンル</th>
+						<th>状態</th>
+						<th></th>
+					</tr>
+				</thead>
 
-	<tbody>
-		<% @genres.each do |genre| %>
-		<tr>
-			<td><%= genre.name %></td>
-			<td>
-				<% if genre.is_active == true %>
-				有効
-				<% else %>
-				無効
-				<% end %>
-			</td>
-			<td><%= link_to '編集', edit_admins_genre_path(genre) %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+				<tbody>
+					<% @genres.each do |genre| %>
+					<tr>
+						<td><%= genre.name %></td>
+						<td>
+							<% if genre.is_active == true %>
+							有効
+							<% else %>
+							無効
+							<% end %>
+						</td>
+						<td><button class="btn btn-primary"><%= link_to '編集する', edit_admins_genre_path(genre),:style=>"color:white;" %></button></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
