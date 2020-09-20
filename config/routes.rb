@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root "customers/products#top"
+  get "about" => "customers/products#about"
+  resources :products, only: [:index, :show]
   # devise_for :customers, class_name: "Customers::Customer"
   devise_for :admins
   namespace :admins do

@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<%= render '/customers/products/genrelist', genres: @genres %>
+
+		<div class="col-xs-10">
+
+			<% if params[:genre_id] %>
+				<h2><%= @genre.name %><span>(全<%= @products_count %>件)</span></h2>
+			<% else %>
+				<h2>商品一覧<spam>(全<%= @products_count %>件)</spam></h2>
+			<% end %>
+		</div>
+
+
+		<div class="row">
+			<!-- 商品一覧　-->
+			<% @products.each do |product| %>
+				<div class="col-xs-3">
+					<div class="product-box">
+						<div>
+							<%= attachment_image_tag product, :image, :fill, 200, 170, fallback: "no_image.jpg"%>
+						</div>
+						<div class="product-name">
+							<%= @product.name %>
+						</div>
+						<div class="product-price">
+							<%= number_to_currency((BigDecimal(@product.price) * BigDecimal("1.08")).ceil) %>(税込)
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+

@@ -1,2 +1,1 @@
-class Customers::CartsController < Admin::Base
-end
+class Customers::CartsController < Customers::Base
