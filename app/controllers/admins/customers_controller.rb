@@ -7,7 +7,6 @@ class Admins::CustomersController < Admins::Base
   end
 
   def edit
-    @customer = Customer.find(params[:id])
   end
 
   def update
@@ -19,6 +18,7 @@ class Admins::CustomersController < Admins::Base
       render "edit"
     end
   end
+  
   private
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :password, :address, :postal_code, :telephone_number, :is_deleted)
