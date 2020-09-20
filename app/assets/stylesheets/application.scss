@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+.alert{
+	color: red;
+}
+.field_with_errors {
+	display: contents;
+	// もしくは diplay: inline;
+}
+
+ .btn-circle {
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	padding: 6px 0;
+	font-size: 12px;
+	line-height: 1.428571429;
+	border-radius: 15px;
+	}
+.text-top{
+	margin-top: 12%;
+}
+.text{
+	margin-top: 50px;
+}
+.text-bottom{
+	margin-top: 60px;
+}
+
