@@ -1,3 +1,3 @@
-class Cosutomers::Base < ApplicationController
-     
+class Admin::Base < ApplicationController
+     layout 'customers'
 end

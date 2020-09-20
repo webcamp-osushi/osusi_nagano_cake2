@@ -1,2 +1,2 @@
-class Customers::ProductsController < Customers::Base
+class Customers::ProductsController < Admin::Base
 end
