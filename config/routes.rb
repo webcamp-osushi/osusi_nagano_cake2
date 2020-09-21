@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   sessions: 'admins/sessions'
   }
   namespace :admins do
-  resources :customers, only: [:index,:show, :edit, :update]
-  root 'products#top'
+  
   	resources :products, except: [:destroy]
   	resources :genres, only: [:create, :index, :edit, :update]
   end
@@ -18,9 +17,10 @@ Rails.application.routes.draw do
  
   end
 
- resources :customers, only: [:show]
-  end
+resources :customers, only: [:index, :show, :edit, :update]
+  root 'products#top'
 
+end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

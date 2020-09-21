@@ -1,7 +1,9 @@
 class Customers::CustomersController < Customers::Base
 
 	
-
+def update
+  	@user = User.find(params[:id])
+  end
 # def confirm
 #     @customer = Customer.find(params[:id])
    
