@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
   # devise_for :customers, class_name: "Customers::Customer"
-  devise_for :admins
 
+  devise_for :admins, controllers: {
+  sessions: 'admins/sessions'
+  }
   namespace :admins do
-  	root 'products#top'
+  resources :customers, only: [:index,:show, :edit, :update]
+  root 'products#top'
   	resources :products, except: [:destroy]
   	resources :genres, only: [:create, :index, :edit, :update]
   end

@@ -13,8 +13,47 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
+// 共通ヘッダー部CSS
+@import "bootstrap-sprockets";  /*ここを追加*/
+@import "bootstrap";            /*ここを追加*/
+
+body {
+padding-top: 100px;
+}
+
+.navbar {
+  padding-bottom: 10px;
+  border-bottom: 3px solid black;
+}
+
+.navbar-left {
+  margin-top: 20px;
+}
+
+header {
+  border: 3px solid black;
+}
+
+.header-link {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.Logo {
+  font-size: 40px;
+  border: 1px solid black;
+  margin-top: 30px;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+// 共通ヘッダー部CSS終了
+
 // admin/product,genreのcss
 .alert{
 	color: red;
@@ -42,4 +81,3 @@
 	margin-top: 60px;
 }
 // admin/product,genreのcss終わり
-
