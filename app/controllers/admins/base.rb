@@ -1,3 +1,3 @@
-class Admins::Base < ApplicationController
-     layout 'admins'
+
+class Admin::Base < ApplicationController
 end
