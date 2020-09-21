@@ -10,4 +10,5 @@ class Product < ApplicationRecord
   	validates :name, presence: true
   	validates :introduction, presence: true
   	validates :price, presence: true, numericality: {only_integer: true}
+  	validates :genre_id, exclusion: { in: %w(nill) }
 end
