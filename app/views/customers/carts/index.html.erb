@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4">
+			<h2>ショッピングカート</h2>
+		</div>
+
+		<% if @cart.any? %> <!-- any？メソッド　モデルにデータ→true なし→false -->
+			<div class="col-xs-3 col-xs-offset-5">
+				<%= link_to "カートを空にする", cart_path, method: :delete %><!--ボタンクラス　-->
+			</div>
+		<% end %>
+	</div>
+
+	<div class="row">
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="col-xs-4">商品名</th>
+					<th class="col-xs-2">単価(税込)</th>
+					<th class="col-xs-2">数量</th>
+					<th class="col-xs-2">小計</th>
+					<th class="col-xs-2"></th>
+				</tr>
+			</thead>
+
+			<tbpdy>
+				
+
+			</tbpdy>
