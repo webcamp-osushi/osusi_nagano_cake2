@@ -1,1 +1,50 @@
-<%= content_for?(:content) ? yield(:content) : yield %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>nagano_cake</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+<body>
+  <header class="navbar navbar-fixed-top">
+      <div class="container">
+
+        <nav class="nav navbar-nav navbar-left">
+          <span class="Logo">ナガノケーキ</span>
+        </nav>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <% if customer_signed_in? %>
+            <li class="header-link"><%= link_to "マイページ"
+              %></li>
+            <li class="header-link"><%= link_to "商品一覧"
+               %></li>
+            <li class="header-link"><%= link_to "カート"
+               %></li>
+            <li class="header-link"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+
+          <% elsif admin_signed_in? %>
+            <li class="header-link"><%= link_to "商品一覧"
+              %></li>
+            <li class="header-link"><%= link_to "会員一覧", admins_customers_path %></li>
+            <li class="header-link"><%= link_to "注文履歴一覧"
+               %></li>
+            <li class="header-link"><%= link_to "ジャンル一覧"
+               %></li>
+            <li class="header-link"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+
+          <% else %>
+            <li class="header-link"><%= link_to "About"
+              %></li>
+            <li class="header-link"><%= link_to "商品一覧"
+             %></li>
+             <li class="header-link"><%= link_to "新規登録", new_customer_registration_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+  </header>
+  <%= yield %>
+  <footer></footer>
+</body>
+</html>
