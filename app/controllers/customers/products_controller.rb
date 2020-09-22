@@ -2,6 +2,7 @@ class Customers::ProductsController < Customers::Base
 
 	def top
 		@genres = Genre.where(is_active: true)
+		@products = Product.find(1,2,3,4)
 	end
 
 	def about

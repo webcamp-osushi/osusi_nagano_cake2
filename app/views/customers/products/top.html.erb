@@ -14,26 +14,29 @@
 
 			<h2>おすすめ商品</h2>
 
-<%#
-			<div class="row">
-				<div class="col-4">
-				<% products.each do |product| %>
-<%#					商品画像を入れる
-					<div class="product-name">
-						<p><%= product_name %>
-<%#						</p>
-						 値段を入れる　
+			<% @products.each do |product| %>
+				<div class="col-xs-3">
+					<div class="top-box">
+						<div>
+							<%= link_to customers_product_path(product.id) do %>
+							<%= attachment_image_tag product, :image, :fill, 200, 200, fallback: "no_image.png", size: "200x200" %>
+							<% end %>
+						</div>
+						<div class="top-name">
+							<%= product.name %>
+						</div>
+						<div class="top-price">
+							<%= number_to_currency((BigDecimal(product.price) * BigDecimal("1.08")).ceil, :unit => "¥" ) %>(税込)
+						</div>
 					</div>
-				<% end %>
-<%#				</div>
-			</div>
-%>
-
-
-
-<%= link_to "もっと見る", customers_products_path %>
-</div>
-</div>
+				</div>
+			<% end %>
 		</div>
+
+
+		<%= link_to "もっと見る", customers_products_path %>
+
 	</div>
+</div>
+	
 
