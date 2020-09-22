@@ -7,13 +7,12 @@
 		<%= f.radio_button :_method, :cash %><%= f.label "銀行振込" %>
 		<h3>お届け先</h3>
 		<%= f.label "ご自身の住所" %>
-		<%#
 		<p>
 		<%= f.radio_button :address, "ご自身の住所" %>
-		<%# <%= @customer.postal_cord %>
-		<%# <%= @customer.address %>
-		<%#  <%= @cutomer.last_name %>
-		<%#  <%= @customer.first_name %>
+		<%= @customer.postal_cord %>
+		<%= @customer.address %>
+		<%= @customer.last_name %>
+		<%= @customer.first_name %>
 	</div>
 	<div class="row">
 		<%= f.label "登録済み住所から選択" %>
