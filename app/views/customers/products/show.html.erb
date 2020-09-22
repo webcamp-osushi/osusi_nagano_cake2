@@ -13,10 +13,10 @@
 			<div class="product-info">
 				<h2><%= @product.name %></h2>
 				<p><%= @product.introduction %></p>
-				<h3><%= number_to_currency((BigDecimal(@product.price) * BigDecimal("1.08")).ceil, :unit => "¥" ) %>(税込)</h3>
+				<h3><%= number_to_currency((BigDecimal(@product.price) * BigDecimal("1.08")).ceil, :unit => "¥", strip_insignificant_zeros: true ) %>(税込)</h3>
 			</div>
 
-				<%= form_for @cart, url:customers_cart_products_path do |f| %>
+				<%= form_for @cart, url:customers_carts_path do |f| %>
 				<%= render 'layouts/error_form', model: f.object %>
 				<%= f.hidden_field :product_id, value: @product.id %>
 

@@ -2,15 +2,6 @@ Rails.application.routes.draw do
 
   root "customers/products#top"
   get "about" => "customers/products#about"
-  resources :products, only: [:index, :show]
-  # devise_for :customers, class_name: "Customers::Customer"
-  devise_for :admins
-  namespace :admins do
-    root 'products#top'
-    resources :products, except: [:destroy]
-    resources :genres, only: [:create, :index, :edit, :update]
-
-
   # devise_for :customers, class_name: "Customers::Customer"
 
 
@@ -29,7 +20,8 @@ Rails.application.routes.draw do
   namespace :customers do
 
     resources :products, only: [:index, :show]
-    resources :cart_products, except: [:show, :new, :edit]
+    resources :carts, except: [:show, :new, :edit]
+    delete "carts" => "carts#destroy_all"
 
  
   end
