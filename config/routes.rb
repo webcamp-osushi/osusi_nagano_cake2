@@ -15,7 +15,14 @@ Rails.application.routes.draw do
   devise_for :customers
 
   namespace :customers do
- 
+    # orderのルーティング
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post 'confirm'
+        get 'thanks'
+      end
+  end
+    # orderのルーティング終わり
   end
 
  resources :customers, only: [:show]

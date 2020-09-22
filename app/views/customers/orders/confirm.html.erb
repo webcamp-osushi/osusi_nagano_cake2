@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="row">
+		<h1>注文確認画面</h1>
+		<table>
+			<thead>
+				<th>商品名</th>
+				<th>単価(税込)</th>
+				<th>数量</th>
+				<th>小計</th>
+			</thead>
+			<tbody>
+				<% current_customer.cart_items.each do |c| %>
+				<tr>
+					<td><%= c.product.name %></td>
+					<td><%= c.product.price %></td>
+					<td><%= c.count %></td>
+					<td><%= c.subtotal_price %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+				<tr>
+					<th>送料</th>
+					<td><%= @order.shipping_cost %></td>
+				</tr>
+				<tr>
+                <th>商品合計</th><%#要編集
+                <%#<td><%= current_customer.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} %>円</td>
+            　　</tr>
+            　　<tr>
+            	<th>請求金額</th>
+            	<td><%= @order.total_price %></td>
+            　　</tr>
+        　　</tbody>
+    　　</table>
+    </div>
+    <div class="row">
+    	<p>支払い方法</p><%= @order._method %>
+    	<p>お届け先</p><%= @order.postal_code %><%= @order.address %></br>
+    	<%= @order.name %>
+    </div>
+　　
+</div>
