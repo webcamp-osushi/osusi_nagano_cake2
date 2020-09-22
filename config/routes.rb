@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
+  root "customers/products#top"
+  get "about" => "customers/products#about"
   # devise_for :customers, class_name: "Customers::Customer"
+
 
   devise_for :admins, controllers: {
   sessions: 'admins/sessions'
@@ -21,11 +24,14 @@ Rails.application.routes.draw do
         post 'confirm'
         get 'thanks'
       end
-  end
+    end
     # orderのルーティング終わり
-  end
 
- resources :customers, only: [:show]
+    resources :products, only: [:index, :show]
+    resources :carts, except: [:show, :new, :edit]
+    delete "carts" => "carts#destroy_all"
+    resources :customers, only: [:show]
+
   end
 
 
