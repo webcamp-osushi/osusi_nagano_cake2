@@ -68,3 +68,5 @@ gem "refile-mini_magick"
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
+# enum 日本語出力のため追加
+gem 'enum_help'
