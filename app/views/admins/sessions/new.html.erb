@@ -7,7 +7,7 @@
         </div>
         <br>
         <div class="login-form">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= form_for(resource, as: resource_name, url: admin_session_path) do |f| %>
             <div class="field">
               <%= f.label :メールアドレス %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -20,7 +20,7 @@
             <br>
             <br>
             <div class="login-btn center-block">
-              <%= link_to 'ログイン', admins_root_path, class:"col-xs-4 btn-primary btn-lg " %>
+              <%= f.submit 'ログイン', class:"col-xs-4 btn-primary btn-lg " %>
             </div>
           <% end %>
         </div>

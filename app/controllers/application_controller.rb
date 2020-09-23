@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
 	def after_sign_in_path_for(resource)
-    if resource == :admin
+    if resource.class == Admin
       admins_root_path
-    elsif resource == :customer
+    elsif resource.class == Customer
     customer_path
     end
   end
