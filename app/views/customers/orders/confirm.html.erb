@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<h1>注文確認画面</h1>
-		<table>
+		<table class="table">
 			<thead>
 				<th>商品名</th>
 				<th>単価(税込)</th>
@@ -9,37 +9,50 @@
 				<th>小計</th>
 			</thead>
 			<tbody>
-				<% current_customer.cart_items.each do |c| %>
+				<% current_customer.carts.each do |c| %>
 				<tr>
 					<td><%= c.product.name %></td>
-					<td><%= c.product.price %></td>
-					<td><%= c.count %></td>
-					<td><%= c.subtotal_price %></td>
+					<td><%= (c.product.price * 1.08).floor %>円</td>
+					<td><%= c.amount %></td>
+					<td><%= (c.subtotal_price * 1.08).floor %>円</td>
 				</tr>
 				<% end %>
 			</tbody>
 		</table>
-		<table>
+		<table class="table">
 			<tbody>
 				<tr>
 					<th>送料</th>
-					<td><%= @order.shipping_cost %></td>
+					<td><%= @order.shipping_cost %>円</td>
 				</tr>
 				<tr>
-                <th>商品合計</th><%#要編集
-                <%#<td><%= current_customer.cart_items.inject(0){|sum, cart_item| cart_item.subtotal_price + sum} %>円</td>
+                <th>商品合計</th>
+                <td><%= @total_price %>円</td>
             　　</tr>
             　　<tr>
             	<th>請求金額</th>
-            	<td><%= @order.total_price %></td>
+            	<td><%= @total_price + @order.shipping_cost %>円</td>
             　　</tr>
         　　</tbody>
     　　</table>
     </div>
     <div class="row">
-    	<p>支払い方法</p><%= @order._method %>
+    	<p>支払い方法</p>
+        <% if @order._method == @order._method(0) %>
+        クレジットカード
+        <% else %>
+        銀行振込
+        <% end %>
     	<p>お届け先</p><%= @order.postal_code %><%= @order.address %></br>
     	<%= @order.name %>
     </div>
 　　
+   <%= form_for customers_orders_path, method: "post" do |f| %>
+          <%= f.hidden_field :postal_code, value: @order.postal_code %>
+          <%= f.hidden_field :total_price, value: @order.total_price %>
+          <%= f.hidden_field :address, value: @order.address %>
+          <%= f.hidden_field :name, value: @order.name %>
+          <%= f.hidden_field :_method, value: @order._method %>
+          <%= f.submit "購入を確定する", class:"btn btn-primary" %>
+        <% end %>
 </div>

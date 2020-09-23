@@ -8,8 +8,10 @@ class Order < ApplicationRecord
 
 	# 小計
 	def subtotal_price
-		price * count
+		price * carts.amount
 	end
+	
+
 
 	# def all_address
 	# 	Customer.postal_cord + Customer.address

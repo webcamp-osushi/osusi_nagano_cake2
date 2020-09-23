@@ -12,6 +12,7 @@ class Product < ApplicationRecord
 		price * 1.1
 	end
 
+
 	validates :is_active, inclusion: { in:[true, false]}
 	validates :genre, presence: true
   	validates :name, presence: true
