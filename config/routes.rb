@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root "customers/products#top"
+  get "about" => "customers/products#about"
   # devise_for :customers, class_name: "Customers::Customer"
 
   devise_for :admins, skip: :all
@@ -25,10 +27,16 @@ Rails.application.routes.draw do
   }
 
   namespace :customers do
+
+    resources :products, only: [:index, :show]
+    resources :carts, except: [:show, :new, :edit]
+    delete "carts" => "carts#destroy_all"
+
  
   end
 
  resources :customers, only: [:show]
+
   end
 
 
