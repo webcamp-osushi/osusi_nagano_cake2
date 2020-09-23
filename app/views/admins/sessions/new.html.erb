@@ -1,13 +1,13 @@
 <div class="main">
   <div class="container">  <!-- この行を追加 -->
     <div class="row">      <!-- この行を追加 -->
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="bg-info col-auto">
           <h2>　管理者ログイン</h2>
         </div>
         <br>
         <div class="login-form">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= form_for(resource, as: resource_name, url: admin_session_path) do |f| %>
             <div class="field">
               <%= f.label :メールアドレス %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -18,8 +18,9 @@
               <%= f.password_field :password, autocomplete: "current-password" %>
             </div>
             <br>
-            <div class="actions">
-              <%= f.submit "ログイン" , class:"btn btn-primary" %>
+            <br>
+            <div class="login-btn center-block">
+              <%= f.submit 'ログイン', class:"col-xs-4 btn-primary btn-lg " %>
             </div>
           <% end %>
         </div>
