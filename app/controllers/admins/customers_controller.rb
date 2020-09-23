@@ -1,5 +1,4 @@
 class Admins::CustomersController < Admins::Base
-
   def index
     @customers = Customer.all
   end
