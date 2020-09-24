@@ -4,11 +4,19 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+ 
+enum is_deleted: {Available: false, Invalid: true}
+   
 
-
-def customer_params
-  params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :password, :address, :postal_cord, :telephone_number, :is_deleted,)
+    def active_for_authentication?
+        super && (self.is_deleted === "Available")
+ end
 end
+    
 
-
+module Bookers2Debug
+  class Application < Rails::Application
+    config.load_defaults 5.2
+    config.i18n.default_locale = :ja 
+  end
 end

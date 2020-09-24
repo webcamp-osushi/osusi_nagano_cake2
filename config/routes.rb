@@ -11,25 +11,22 @@ Rails.application.routes.draw do
   	resources :genres, only: [:create, :index, :edit, :update]
   end
 
+
+
   devise_for :customers
 
   namespace :customers do
- 
   end
+    
+  resources :customers do 
+     member do
+        get "check"
 
-resources :customers, only: [:index, :show, :edit, :update]
-  root 'products#top'
-
+        
+     patch "leave"
+  end
 end
-
+end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-
-  #退会機能
-  # resources :customers do
-  #       member do
-  #           get "confirm"
-            
-  #           patch "leave"
-  #   end
 

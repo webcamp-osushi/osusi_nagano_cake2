@@ -1,9 +1,7 @@
 class Customers::CustomersController < Customers::Base
 
 	
-def update
-  	@user = User.find(params[:id])
-  end
+
 # def confirm
 #     @customer = Customer.find(params[:id])
    
@@ -20,10 +18,4 @@ def update
 #     #root_pathへのリダイレクトでいいか要確認
 
 
-# end
-
-# private
-
-# def customer_params
-# 	params.require(:customer).permit(:active)
 # end
