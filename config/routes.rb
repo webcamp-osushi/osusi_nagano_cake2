@@ -27,15 +27,25 @@ Rails.application.routes.draw do
   }
 
   namespace :customers do
+    # orderのルーティング
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post 'confirm'
+        get 'thanks'
+      end
+    end
+    # orderのルーティング終わり
 
     resources :products, only: [:index, :show]
     resources :carts, except: [:show, :new, :edit]
     delete "carts" => "carts#destroy_all"
 
+    resources :addresses, except:[:new, :show]
  
   end
 
  resources :customers, only: [:show]
+
 
   end
 
@@ -50,4 +60,4 @@ Rails.application.routes.draw do
             
   #           patch "leave"
   #   end
-
+end
