@@ -2,6 +2,7 @@
 	<div class="row">
 		<h1>ユーザー詳細ページ</h1>
 		<table class="table table-hover">
+			<div class ="col-lg-6">
 			<thead>
 				<th>氏名</th>
 				<th>カナ</th>
@@ -19,5 +20,7 @@
 				<td><%= @customer.email%></td>
 			</tbody>
 		</table>
+	</div>
+		<p>注文履歴<%= link_to "一覧を見る", customers_orders_path, { class: "btn btn-primary" }%></p>
 	</div>
 </div>
