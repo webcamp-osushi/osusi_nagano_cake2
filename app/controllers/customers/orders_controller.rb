@@ -6,7 +6,7 @@ class Customers::OrdersController < Customers::Base
 	end
 
 	def confirm
-		@order = Order.new(order_params)
+		@order = current_customer.orders.build(order_params)
 		@order.shipping_cost = 800
 		# カート内合計金額。cartコントローラー,indexアクションより引用
 		@order.total_price = 0
@@ -30,7 +30,7 @@ class Customers::OrdersController < Customers::Base
 	end
 
 	def create
-		@order = Order.new(order_params)
+		@order = current_customer.orders.build(order_params)
 		@order.save
 		# order_detailテーブルにも保存
 		current_customer.carts.each do |cart|
@@ -56,9 +56,12 @@ class Customers::OrdersController < Customers::Base
 	end
 
 	def index
+		@orders = current_customer.orders
 	end
 
 	def show
+		@order = Order.find(params[:id])
+		@order.shipping_cost = 800 
 	end
 
 	def thanks

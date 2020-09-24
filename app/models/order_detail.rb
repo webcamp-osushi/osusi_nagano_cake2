@@ -1,7 +1,7 @@
 class OrderDetail < ApplicationRecord
 
 
-	has_many :products, dependent: :destroy
+	belongs_to :product
 	belongs_to :order
   enum status:{ 
     impossible: 0,
@@ -9,5 +9,9 @@ class OrderDetail < ApplicationRecord
     making: 2,
     finish: 3
   }, _prefix: true
+  # 小計
+  def subtotal_price
+		price * amount * 1.08
+	end
 
 end
