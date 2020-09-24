@@ -15,12 +15,18 @@
           </thead>
           <tbody>
             <!-- order each文挿入 -->
+            <% @orders.each do |order| %>
               <tr>
-                <td>order.datetime</td>
-                <td>customer.last_name and customer_first_name</td>
-                <td>order.amount</td>
-                <td>order_status</td>
+                <td>
+                  <%= link_to edit_admins_order_path(order.id) do %>
+                    <%= order.created_at %>
+                  <% end %>
+                </td>
+                <td><%= order.name %></td>
+                <td><%= order.amount %></td>
+                <td><%= order.status %></td>
               </tr>
+            <% end %>
           </tbody>
         </table>
       </section>
