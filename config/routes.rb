@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
-
+    resources :customers, only: [:index,:show, :edit, :update]
   	resources :products, except: [:destroy]
   	resources :genres, only: [:create, :index, :edit, :update]
     resources :orders, only: [:create, :index, :edit, :update]
@@ -20,8 +20,19 @@ Rails.application.routes.draw do
   end
 
 
+   devise_for :customers, controllers: {
+  sessions:      'customers/sessions',
+  passwords:     'customers/passwords',
+  registrations: 'customers/registrations'
+  }
+
+  namespace :customers do
+
+    resources :products, only: [:index, :show]
+    resources :carts, except: [:show, :new, :edit]
+    delete "carts" => "carts#destroy_all"
   end
-    
+
   resources :customers do 
      member do
         get "check"
