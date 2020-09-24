@@ -12,52 +12,24 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
-    resources :customers, only: [:index,:show, :edit, :update]
-    root 'products#top'
+
   	resources :products, except: [:destroy]
   	resources :genres, only: [:create, :index, :edit, :update]
     resources :orders, only: [:create, :index, :edit, :update]
     resources :order_details, only: [:update]
   end
 
-  devise_for :customers, controllers: {
-  sessions:      'customers/sessions',
-  passwords:     'customers/passwords',
-  registrations: 'cutomers/registrations'
-  }
 
-  namespace :customers do
-    # orderのルーティング
-    resources :orders, only: [:new, :create, :index, :show] do
-      collection do
-        post 'confirm'
-        get 'thanks'
-      end
-    end
-    # orderのルーティング終わり
-
-    resources :products, only: [:index, :show]
-    resources :carts, except: [:show, :new, :edit]
-    delete "carts" => "carts#destroy_all"
-
-    resources :addresses, except:[:new, :show]
- 
   end
-
- resources :customers, only: [:show]
+    
+  resources :customers do 
+     member do
+        get "check"
 
 
   end
-
-
+end
+end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
-  #退会機能
-  # resources :customers do
-  #       member do
-  #           get "confirm"
-            
-  #           patch "leave"
-  #   end
-end
