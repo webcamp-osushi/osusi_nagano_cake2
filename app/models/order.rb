@@ -6,13 +6,14 @@ class Order < ApplicationRecord
 	belongs_to :customer
 
 
+
 	# 商品合計
 	def product_sum_price
 		total = 0
 		order_details.each do |order_detail|
 			total += order_detail.subtotal_price
 		end
-	 (total * 1.08).ceil
+	 total
 	end
 
 
