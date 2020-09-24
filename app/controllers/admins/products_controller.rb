@@ -1,5 +1,4 @@
 class Admins::ProductsController < Admins::Base
-
 	def top
 	end
 
@@ -42,5 +41,4 @@ class Admins::ProductsController < Admins::Base
 	def product_params
 		params.require(:product).permit(:name, :introduction, :price, :image, :is_active, :genre_id)
 	end
-
 end
