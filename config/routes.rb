@@ -39,7 +39,13 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
     resources :carts, except: [:show, :new, :edit]
     delete "carts" => "carts#destroy_all"
-    resources :customers, only: [:show]
+
+    resources :addresses, except:[:new, :show]
+ 
+  end
+
+ resources :customers, only: [:show]
+
 
   end
 
