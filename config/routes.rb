@@ -20,20 +20,33 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
   end
 
+<<<<<<< HEAD
+  devise_for :customers, controllers: {
+=======
  devise_for :customers, controllers: {
+>>>>>>> f669856bd484038db90f157e7a664e43466def02
   sessions:      'customers/sessions',
   passwords:     'customers/passwords',
   registrations: 'customers/registrations'
   }
 
   namespace :customers do
+<<<<<<< HEAD
+
+    resources :products, only: [:index, :show]
+    resources :carts, except: [:show, :new, :edit]
+    delete "carts" => "carts#destroy_all"
+=======
     # orderのルーティング
+>>>>>>> f669856bd484038db90f157e7a664e43466def02
     resources :orders, only: [:new, :create, :index, :show] do
       collection do
         post 'confirm'
         get 'thanks'
       end
     end
+<<<<<<< HEAD
+=======
     # orderのルーティング終わり
 
     resources :products, only: [:index, :show]
@@ -41,17 +54,28 @@ Rails.application.routes.draw do
     delete "carts" => "carts#destroy_all"
     resources :customers, only: [:show]
     resources :addresses, except:[:new, :show]
+>>>>>>> f669856bd484038db90f157e7a664e43466def02
 
+ 
   end
 
+<<<<<<< HEAD
+    
+=======
+>>>>>>> f669856bd484038db90f157e7a664e43466def02
   resources :customers do 
      member do
         get "check"
         patch "leave"
       end
   end
+<<<<<<< HEAD
+
+end
+=======
 
 
 
 
 end
+>>>>>>> f669856bd484038db90f157e7a664e43466def02

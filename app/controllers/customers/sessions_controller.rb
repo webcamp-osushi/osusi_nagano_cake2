@@ -4,11 +4,11 @@ class Customers::SessionsController < Devise::SessionsController
 
 
 def after_sign_in_path_for(resource)
-  products_path
+  root_path
 end 
 
 def after_sign_out_path_for(resource)
-  products_path
+  root_path
 end 
 
 
@@ -23,4 +23,8 @@ protected
       end
     end
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> f669856bd484038db90f157e7a664e43466def02
