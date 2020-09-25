@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 // 共通ヘッダー部CSS
 @import "bootstrap-sprockets";  /*ここを追加*/
 @import "bootstrap";            /*ここを追加*/
@@ -81,3 +82,40 @@ header {
 	margin-top: 60px;
 }
 // admin/product,genreのcss終わり
+
+
+
+// product-top
+
+.top-visual {
+	background-image: url(top.jpg);
+	background-size: cover;
+	width: 100%;
+	height: 350px;
+	posision: relative;
+}
+
+.top-text {
+	position:absolute;
+	top: 30px;
+	right: 40px;
+}
+
+.top-name {
+	font-size: 18px;
+}
+
+.top-price {
+	fontsize: 18px;
+}
+
+// product-index
+
+.product-name {
+	font-size: 20px;
+}
+
+.product-price {
+	font-size: 20px;
+}
+

@@ -8,39 +8,41 @@
         <table class="table">
           <tr>
             <th>顧客ID</th>
-            <th>customer.id</th>
-            <th>customer.is_deleted</th>
+            <th><%= @customer.id %></th>
+            <th><% if @customer.is_deleted == false %>有効
+                <% else %>退会済
+                <% end %></th>
           </tr>
 
           <tr>
             <th>氏名</th>
-            <th>customer.last_name and customer_first_name</th>
+            <th><%= @customer.last_name %><%= @customer_first_name %></th>
           </tr>
           <tr>
             <th>フリガナ</th>
-            <th>customer.last_name_kana and customer.first_name_kana</th>
+            <th><%= @customer.last_name_kana %><%= @customer.first_name_kana %></th>
           </tr>
           <tr>
             <th>郵便番号</th>
-            <th>customer.postal_code</th>
+            <th><%= @customer.postal_code %></th>
           </tr>
           <tr>
             <th>住所</th>
-            <th>customer.address</th>
+            <th><%= @customer.address %></th>
           </tr>
           <tr>
             <th>電話番号</th>
-            <th>customer.telephone_number</th>
+            <th><%= @customer.telephone_number %></th>
           </tr>
           <tr>
             <th>メールアドレス</th>
-            <th>customer.email</th>
+            <th><%= @customer.email %></th>
           </tr>
         </table>
         <br>
         <div class='btn-toolbar'>
-          <div class="btn-group ">
-              <%= link_to '編集する', edit_admins_customer_path, class:"col-xs-12 btn-success btn-lg " %>
+          <div class="col-lg-4">
+            <button class="btn btn-primary btn-lg text-bottom"><%= link_to "編集する", edit_admins_customer_path, :style=>"color:white;" %></button>
           </div>
           <div class="btn-group btn-warning btn-lg">
               <%= link_to '注文履歴一覧を見る', class:"col-xs-9  " %>

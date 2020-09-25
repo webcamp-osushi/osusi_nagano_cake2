@@ -1,94 +1,23 @@
 <p class="notice"><%= notice %></p>
 <div class="container">
   <div class="row">
-    <section class="customer-detail">
-        <h2>customer.nameの会員詳細</h2>
-    <br>
-    <div class="col-xs-8">
-        <table class="table">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <div class="ID">
-                <label class="col-sm-4 control-label">顧客ID</label>
-                <label class="col-sm- control-label">customer_id</label>
-              </div>
-              <br>
-              <div class="name">
-                <label class="col-sm-3 control-label">氏名</label>
-                <div class="col-sm-9 form-inline">
-                  <input type="text" class="form-control" />&nbsp;
-                  <input type="text" class="form-control" />
-                </div>
-              </div>
-              <br>
-              <br>
-              <br>
-              <div class="name-kana">
-                <label class="col-sm-3 control-label">フリガナ</label>
-                <div class="col-sm-9 form-inline">
-                  <input type="text" class="form-control" />&nbsp;
-                  <input type="text" class="form-control" />
-                </div>
-              </div>
-              <br>
-              <br>
-              <br>
-              <div class="postal-code">
-                <label class="col-sm-3 control-label">郵便番号</label>
-                <div class="col-sm-9 form-inline">
-                  <input type="text" class="form-control" />&nbsp;
-                </div>
-              </div>
-              <br>
-              <br>
-              <br>
-              <div class="address">
-                <label class="col-sm-3 control-label">住所</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" />&nbsp;
-                </div>
-              </div>
-              <br>
-              <div class="telephone-number">
-                <label class="col-sm-3 control-label">電話番号</label>
-                <div class="col-sm-9 form-inline">
-                  <input type="text" class="form-control" />&nbsp;
-                </div>
-              </div>
-              <br>
-              <br>
-              <br>
-              <br>
-              <div class="email">
-                <label class="col-sm-3 control-label">メールアドレス</label>
-                <div class="col-sm-9 form-inline">
-                  <input type="email" class="form-control" />&nbsp;
-                </div>
-              </div>
-              <br>
-              <br>
-              <br>
-              <div class="status">
-                <label class="col-sm-3 control-label pull-left">会員ステータス</label>
-                <div class="col-sm- form-inline">
-                  <input class="form-check-input" type="radio" name="radio1" id="radio1a" checked>
-                    <label class="form-check-label" for="radio1a">有効</label>
-                    <input class="form-check-input" type="radio" name="radio1" id="radio1b">
-                    <label class="form-check-label" for="radio1b">退会済み</label>
-                </div>
-              </div>
-            </div>
-          </form>
-          <div class='btn-toolbar'>
-            <div class="btn-group ">
-                <%= link_to '変更を保存する', admins_customer_path, class:"col-xs-12 btn-success btn-lg " %>
-            </div>
-          </div>
-        </table>
+    <%= form_for(@customer, url: {controller: "customers", action: "update"}) do |f| %>
+    <div class="col-lg-8">
+      <h2>customer.nameの会員詳細</h2>
+      <br>
+      <%= render 'layouts/error_form', model: f.object %>
+      <div class= "customer_text_area">
+        <p>氏名</p><%= f.text_field :last_name %><%= f.text_field :first_name %>
+        <p>フリガナ</p><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>
+        <p>郵便番号</p><%= f.text_field :postal_code %>
+        <p>住所</p><%= f.text_area :address %>
+        <p>電話番号</p><%= f.text_field :telephone_number %>
+        <p>会員ステータス</p><%= f.select :is_active, [['退会済み',true],['有効',false]], { include_blank: '--選択してください--' } %>
       </div>
-    </section>
+    </div>
+    <div class="col-lg-4">
+      <%= f.submit "変更を保存", class: "btn btn-primary" %>
+    </div>
+    <% end %>
   </div>
 </div>
-
-
-    

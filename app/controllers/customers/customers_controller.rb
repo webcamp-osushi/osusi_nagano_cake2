@@ -1,6 +1,9 @@
 class Customers::CustomersController < Customers::Base
 
-	
+	def show
+		@customer = current_customer
+
+	end
 
 # def confirm
 #     @customer = Customer.find(params[:id])
@@ -19,3 +22,4 @@ class Customers::CustomersController < Customers::Base
 
 
 # end
+
