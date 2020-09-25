@@ -27,27 +27,24 @@ Rails.application.routes.draw do
   }
 
   namespace :customers do
+    # orderのルーティング
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post 'confirm'
+        get 'thanks'
+      end
+    end
+    # orderのルーティング終わり
 
     resources :products, only: [:index, :show]
     resources :carts, except: [:show, :new, :edit]
     delete "carts" => "carts#destroy_all"
-
+    resources :customers, only: [:show]
+    resources :addresses, except:[:new, :show]
  
   end
 
- resources :customers, only: [:show]
-
-  end
 
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-
-  #退会機能
-  # resources :customers do
-  #       member do
-  #           get "confirm"
-            
-  #           patch "leave"
-  #   end
-
+ 
+end
