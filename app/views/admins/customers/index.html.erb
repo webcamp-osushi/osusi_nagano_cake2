@@ -17,10 +17,10 @@
             <!-- customer each文挿入 -->
             <% @customers.each do |customer| %>
               <tr>
-                <td><%= custemer.id %></td>
+                <td><%= customer.id %></td>
                 <td>
                   <%= link_to admins_customer_path(customer.id) do %>
-                    <%= customer.last_name %><%= customer_first_name %>
+                    <%= customer.last_name %><%= customer.first_name %>
                   <% end %>
                   </td>
                 <td><%= customer.email %></td>
