@@ -15,12 +15,20 @@
           </thead>
           <tbody>
             <!-- customer each文挿入 -->
+            <% @customers.each do |customer| %>
               <tr>
-                <td>custemer.id</td>
-                <td>customer.last_name and customer_first_name</td>
-                <td>customer.email</td>
-                <td>customer.is_deleted</td>
+                <td><%= custemer.id %></td>
+                <td>
+                  <%= link_to admins_customer_path(customer.id) do %>
+                    <%= customer.last_name %><%= customer_first_name %>
+                  <% end %>
+                  </td>
+                <td><%= customer.email %></td>
+                <td><% if customer.is_deleted == false %>有効
+                <% else %>退会済
+                <% end %></td>
               </tr>
+            <% end %>
           </tbody>
         </table>
       </section>
