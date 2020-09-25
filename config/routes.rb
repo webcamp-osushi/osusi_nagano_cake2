@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   resources :customers do 
      member do
         get "check"
+        patch "leave"
       end
   end
 
