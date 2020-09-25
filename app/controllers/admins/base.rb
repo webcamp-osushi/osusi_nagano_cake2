@@ -1,3 +1,5 @@
-class Admin::Base < ApplicationController
-     layout 'admins'
+class Admins::Base < ApplicationController
+
+  before_action :authenticate_admin!
+
 end

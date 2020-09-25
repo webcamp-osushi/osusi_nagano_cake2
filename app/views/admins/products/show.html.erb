@@ -1,0 +1,29 @@
+<%= link_to "一覧に戻る", admins_products_path %>
+<div class ="container">
+	<div class="row">
+		<div class="col-lg-6">
+			<h1>商品詳細</h1>
+			<div class= "img_area">
+
+				<%= image_tag attachment_url(@product, :image, :fill, 300, 300, format: "jpg", fallback: "no-img.jpg") %>
+        
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class= "product_text_area">
+				<div class="text-top">商品名:  <%= @product.name %></br></div>
+				<div class="text">商品説明:   <%= @product.introduction %></div>
+				<div class="text">ジャンル:   <%= @product.genre.name %></div>
+				<div class="text">税込価格(税抜き価格): <%= @product.tax_in_price.floor %>(<%= @product.price %>)円</div> <%# .foorで小数点切り捨て %>
+				<div class="text">販売ステータス: <% if @product.is_active == false %>販売停止中
+					<% else %>販売中
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<button class="btn btn-primary btn-lg text-bottom"><%= link_to "編集する", edit_admins_product_path(@product), :style=>"color:white;" %></button>
+			</div>
+		</div>
+	</div>

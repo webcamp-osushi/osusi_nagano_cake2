@@ -1,0 +1,23 @@
+<p class="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <%= form_for(@customer, url: {controller: "customers", action: "update"}) do |f| %>
+    <div class="col-lg-8">
+      <h2>customer.nameの会員詳細</h2>
+      <br>
+      <%= render 'layouts/error_form', model: f.object %>
+      <div class= "customer_text_area">
+        <p>氏名</p><%= f.text_field :last_name %><%= f.text_field :first_name %>
+        <p>フリガナ</p><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %>
+        <p>郵便番号</p><%= f.text_field :postal_code %>
+        <p>住所</p><%= f.text_area :address %>
+        <p>電話番号</p><%= f.text_field :telephone_number %>
+        <p>会員ステータス</p><%= f.select :is_active, [['退会済み',true],['有効',false]], { include_blank: '--選択してください--' } %>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <%= f.submit "変更を保存", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>

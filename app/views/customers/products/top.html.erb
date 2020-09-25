@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="row">
+		<%= render '/customers/products/genrelist', genres: @genres %>
+
+		<div class="col-xs-9 col-xs-offset-1">
+			<div class="top-visual">
+			<p class="top-text">
+				ようこそ、NaganoCakeへ！<br>
+				このサイトは、ケーキ販売のECサイトになります。<br>
+				会員でない方も商品の閲覧はできますが、<br>
+				購入には会員登録が必要になります。</p>
+			</div>
+
+
+			<h2>おすすめ商品</h2>
+
+			<% @products.each do |product| %>
+				<div class="col-xs-3">
+					<div class="top-box">
+						<div>
+							<%= link_to customers_product_path(product.id) do %>
+							<%= attachment_image_tag product, :image, :fill, 200, 200, fallback: "no_image.png", size: "200x200" %>
+							<% end %>
+						</div>
+						<div class="top-name">
+							<%= product.name %>
+						</div>
+						<div class="top-price">
+							<%= number_to_currency((BigDecimal(product.price) * BigDecimal("1.08")).ceil, :unit => "¥" ) %>(税込)
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+
+
+		<%= link_to "もっと見る", customers_products_path %>
+
+	</div>
+</div>
+	
+
