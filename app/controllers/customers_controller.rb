@@ -34,7 +34,7 @@ def leave
    
     reset_session
    
-    redirect_to products_path
+    redirect_to customers_products_path
 end
 
 
