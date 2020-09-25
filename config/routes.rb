@@ -40,18 +40,11 @@ Rails.application.routes.draw do
     resources :carts, except: [:show, :new, :edit]
     delete "carts" => "carts#destroy_all"
     resources :customers, only: [:show]
-
+    resources :addresses, except:[:new, :show]
+ 
   end
 
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-
-  #退会機能
-  # resources :customers do
-  #       member do
-  #           get "confirm"
-            
-  #           patch "leave"
-  #   end
+ 
 end
