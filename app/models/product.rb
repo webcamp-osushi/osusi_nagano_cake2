@@ -9,7 +9,7 @@ class Product < ApplicationRecord
 
 	# 税込価格
 	def tax_in_price
-		price * 1.1
+		price * 1.08
 	end
 
 
