@@ -10,6 +10,7 @@ class OrderDetail < ApplicationRecord
     製作完了: 3
   }, _prefix: true
   # 小計
+  
   def subtotal_price
 		price * amount * 1.08
 	end
