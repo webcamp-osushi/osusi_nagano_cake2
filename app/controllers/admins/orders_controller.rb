@@ -9,12 +9,15 @@ class Admins::OrdersController < Admins::Base
 
   def update
     @order = Order.find(params[:id])
-    if @order.update(order_params)
-    redirect_to admins_order_path(@order.id)
-    flash[:notice] = "You have updated customer successfully."
+    @order_detail = @order.order_details
+    if params[:order][:status] == "入金確認"
+      @order.update(status: 1)
+      @order_detail.update(making_status: 1)
+    redirect_to admins_orders_path
     else
       render "edit"
     end
+    flash[:notice] = "You have updated customer successfully."
   end
 
   private

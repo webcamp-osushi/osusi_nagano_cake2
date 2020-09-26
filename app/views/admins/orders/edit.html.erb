@@ -22,15 +22,12 @@
             <div class="pay-method">
               <label class="col-sm-4 control-label">支払方法</label>
               <label class="col-sm- control-label">
-                <!-- orderのpayment_methodのみ表示不可 -->
-                <% if false %>
-              <%= @order.payment_method %></label>
-                <% end %>
+              <%= @order._method %></label>
             </div>
             <br>
             <div class="order-status">
               <label class="col-sm-4 control-label">注文ステータス</label>
-              <%= form_for(@order,url:admins_order_path(@order)) do |f| %>
+              <%= form_for(@order,url:admins_order_path) do |f| %>
               <%= f.select  :status, Order.statuses.keys.map {|k| [("　#{k}"), k]} %>
               <br>
               <%= f.submit '更新', class:"col-xs-2 btn-primary btn-sm " %>
@@ -54,20 +51,18 @@
              <tbody>
                <!-- order each文挿入 -->
                <% @order.order_details.each do |order_detail|  %>
-              <tr>
-                <td><%= order_detail.product.name %></td>
-                <td><%= order_detail.price %></td>
-                <td><%= order_detail.amount %></td>
-                <td><%= order_detail.subtotal_price %></td>
-                <!-- order detailの製作ステータスのみ表示不可
-                  また、上記オーダー変更時の相互自動更新についても反映必要あり-->
-                <% if false %>
-                  <%= form_for(order_detail,url:admins_order_detail_path(order_detail)) do |f| %>
-                    <td><%= f.select :making_status,OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %></td>
-                  <% end %>
-                  <td> <%= f.submit '更新', class:"col-xs-2 btn-primary btn-sm " %></td>
-                <% end %>
-              </tr>
+                <tr>
+                  <td><%= order_detail.product.name %></td>
+                  <td><%= order_detail.price %></td>
+                  <td><%= order_detail.amount %></td>
+                  <td><%= order_detail.subtotal_price %></td>
+                  <!-- order detailの製作ステータスのみ表示不可
+                    また、上記オーダー変更時の相互自動更新についても反映必要あり-->
+                    <%= form_for(order_detail,url:admins_order_detail_path(order_detail)) do |f| %>
+                      <td><%= f.select :making_status,OrderDetail.making_statuses.keys.map {|k| [("#{k}"), k]} %></td>
+                    <td> <%= f.submit '更新', class:"col-xs-12 btn-primary btn-sm " %></td>
+                    <% end %>
+                </tr>
               <% end %>
              </tbody>
           </div>
