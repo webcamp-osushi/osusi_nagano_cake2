@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container product-index">
 	<div class="row">
 		<%= render '/customers/products/genrelist', genres: @genres %>
 
@@ -23,10 +23,14 @@
 							<% end %>
 						</div>
 						<div class="product-name">
+							<%= link_to customers_product_path(product.id), class: "product-box-link" do %>
 							<%= product.name %>
+							<% end %>
 						</div>
 						<div class="product-price">
+							<%= link_to customers_product_path(product.id), class: "product-box-link" do %>
 							<%= number_to_currency((BigDecimal(product.price) * BigDecimal("1.08")).ceil, :unit => "¥", strip_insignificant_zeros: true ) %>(税込)
+							<% end %>
 						</div>
 					</div>
 				</div>

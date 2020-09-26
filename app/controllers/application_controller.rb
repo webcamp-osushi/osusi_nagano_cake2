@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     if resource.class == Admin
       admins_root_path
     elsif resource.class == Customer
-      customer_path(current_customer)
+      root_path
     end
   end
   
