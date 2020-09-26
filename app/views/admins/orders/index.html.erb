@@ -23,7 +23,10 @@
                   <% end %>
                 </td>
                 <td><%= order.name %></td>
-                <td><%= order.amount %></td>
+                <!-- orderには総数のカラムがないのが原因？カスタマーのオーダーではカレントカスタマーのカートから数をもってきているがここはそれでは不可 -->
+                <% if false %><td><%= order.amount %></td>
+                 <% end %>
+                <td> orderの数量 </td>
                 <td><%= order.status %></td>
               </tr>
             <% end %>
