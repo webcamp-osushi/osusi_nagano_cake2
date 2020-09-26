@@ -1,5 +1,6 @@
 class Admins::ProductsController < Admins::Base
 	def top
+		@orders = Order.all
 	end
 
 	def new
