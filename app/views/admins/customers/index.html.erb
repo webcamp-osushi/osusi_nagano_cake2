@@ -17,15 +17,15 @@
             <!-- customer each文挿入 -->
             <% @customers.each do |customer| %>
               <tr>
-                <td><%= custemer.id %></td>
+                <td><%= customer.id %></td>
                 <td>
                   <%= link_to admins_customer_path(customer.id) do %>
-                    <%= customer.last_name %><%= customer_first_name %>
+                    <%= customer.last_name %><%= customer.first_name %>
                   <% end %>
                   </td>
                 <td><%= customer.email %></td>
-                <td><% if customer.is_deleted == false %>有効
-                <% else %>退会済
+                <td><% if customer.is_deleted == true %>退会済み
+                <% else %>有効
                 <% end %></td>
               </tr>
             <% end %>
