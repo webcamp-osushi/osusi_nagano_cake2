@@ -17,10 +17,6 @@ class Order < ApplicationRecord
 	end
 
 
-	# def all_address
-	# 	Customer.postal_cord + Customer.address
- #    end
-
   enum status:{ 
     入金待ち: 0,
     入金確認: 1,
