@@ -7,6 +7,7 @@ class Customers::OrdersController < Customers::Base
 	end
 
 	def confirm
+		@customer_address =Address.find(params[:address][:id])
 		@order = current_customer.orders.build(order_params)
 		@order.shipping_cost = 800
 		# カート内合計金額。cartコントローラー,indexアクションより引用
@@ -23,15 +24,15 @@ class Customers::OrdersController < Customers::Base
 			@order.address = current_customer.address
 			@order.name = current_customer.last_name + current_customer.first_name
 		when "登録済み住所から選択"
-			@order.postal_code = Address.find(set_delivery[:id]).postal_code
-			@order.address = Address.find(set_delivery[:id]).address
-			@order.name = Address.find(set_delivery[:id]).name
+			@order.postal_code = @customer_address.postal_code
+			@order.address = @customer_address.address
+			@order.name = @customer_address.name
 		when  "新しいお届け先"
 		end
 	end
 
 	def create
-		@order = current_customer.orders.build(order_params) #saveメソッドじゃうまくいかなかったためbuild使用
+		@order = current_customer.orders.build(order_params) #newメソッドじゃうまくいかなかったためbuild使用
 		@order.save
 		# order_detailテーブルにも保存
 		current_customer.carts.each do |cart|
@@ -43,13 +44,12 @@ class Customers::OrdersController < Customers::Base
 			@order_detail.save
 		end
 		# 新しいアドレスを配送先に保存
-		@address_select = params[:address_select]
-		if @address_select == "新しいお届け先"
-			@address = Address.new(
-				customer_id: current_user_id,
-				postal_code: @order.postcode,
-				address: @order.address,
-				name: @order.name )
+		if params[:order][:address_select] == "新しいお届け先"
+			@address = Address.new()
+			 @address.customer_id = current_customer.id
+			 @address.postal_code = params[:order][:postalcode]
+			 @address.address = params[:order][:address]
+			 @address.name = params[:order][:name]
 			@address.save
 		end
 		current_customer.carts.destroy_all
