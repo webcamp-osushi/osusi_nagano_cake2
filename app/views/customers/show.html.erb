@@ -37,6 +37,7 @@
 				</thead>
 			</table>
 			<p>注文履歴<%= link_to "一覧を見る", customers_orders_path, { class: "btn btn-primary" }%></p>
+			<p>配送先<%= link_to "一覧を見る", customers_addresses_path(current_customer), { class: "btn btn-primary" } %></p>
 		</div>
 	</div>
 

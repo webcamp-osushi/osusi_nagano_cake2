@@ -3,13 +3,13 @@
 	<div class= "row">
 		<h1>注文情報入力</h1>
 		<h3>支払い方法</h3>
-		<%= f.radio_button :_method, :card %><%= f.label "クレジットカード" %></br>
-		<%= f.radio_button :_method, :cash %><%= f.label "銀行振込" %>
+		<%= f.radio_button :_method, :クレジットカード %><%= f.label "クレジットカード" %></br>
+		<%= f.radio_button :_method, :銀行振込 %><%= f.label "銀行振込" %>
 		<h3>お届け先</h3>
 		<%= f.label "ご自身の住所" %>
 		<p>
 		<%= radio_button_tag :address_select , "ご自身の住所" %>
-		<%= @customer.postal_cord %>
+		〒<%= @customer.postal_cord %>
 		<%= @customer.address %>
 		<%= @customer.last_name %>
 		<%= @customer.first_name %>
@@ -17,17 +17,31 @@
 	<div class="row">
 		<%= f.label "登録済み住所から選択" %>
 		<%= radio_button_tag :address_select, "登録済み住所から選択" %>
-
+		<%= collection_select :address, :id, @addresses,:id, :address  %>
 	</div>
 	<div class="row">
 		<%= f.label "新しいお届け先" %>
 		<%= radio_button_tag :address_select, "新しいお届け先" %></br>
-		郵便番号（ハイフンなし）<%= f.text_field :postal_code %></br>
-		住所<%= f.text_field :address %></br>
-		宛名<%= f.text_field :name %>
+		<tabel class="table">
+			<tbody>
+				<tr>
+					<th>郵便番号（ハイフンなし)</th>
+					<td><%= f.text_field :postal_code %></td><br>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td><%= f.text_field :address %></td><br>
+				</tr>
+				<tr>
+					<th>宛名</th>
+					<td><%= f.text_field :name %></td>
+				</tr>
+			</tbody>
+		</tabel>
+		
 	</div>
 	<div class="row">
-		 <%= f.submit "確認画面へ進む" %>
+		 <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
 	</div>
 
 	<% end %>
