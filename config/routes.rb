@@ -23,7 +23,7 @@ Rails.application.routes.draw do
  devise_for :customers, controllers: {
   sessions:      'customers/sessions',
   passwords:     'customers/passwords',
-  registrations: 'cutomers/registrations'
+  registrations: 'customers/registrations'
   }
 
   namespace :customers do
