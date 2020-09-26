@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :orders, dependent: :destroy
   has_many :carts, dependent: :destroy
+  has_many :addresses, dependent: :destroy
   
   enum is_deleted: {Available: false, Invalid: true}
     def active_for_authentication?

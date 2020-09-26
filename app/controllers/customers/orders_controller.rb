@@ -3,6 +3,7 @@ class Customers::OrdersController < Customers::Base
 	def new
 		@order = Order.new
 		@customer = current_customer
+		@addresses = Address.where(customer_id: @customer.id)
 	end
 
 	def confirm
@@ -30,7 +31,7 @@ class Customers::OrdersController < Customers::Base
 	end
 
 	def create
-		@order = current_customer.orders.build(order_params)
+		@order = current_customer.orders.build(order_params) #saveメソッドじゃうまくいかなかったためbuild使用
 		@order.save
 		# order_detailテーブルにも保存
 		current_customer.carts.each do |cart|
@@ -61,7 +62,7 @@ class Customers::OrdersController < Customers::Base
 
 	def show
 		@order = Order.find(params[:id])
-		@order.shipping_cost = 800 
+		@order.shipping_cost = 800
 	end
 
 	def thanks

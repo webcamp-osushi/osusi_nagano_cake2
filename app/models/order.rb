@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 
 
-	enum _method: { card: 0, cash: 1 }
+	enum _method: { クレジットカード: 0, 銀行振込: 1 }
 	has_many :order_details, dependent: :destroy
 	belongs_to :customer
 
@@ -22,12 +22,12 @@ class Order < ApplicationRecord
  #    end
 
   enum status:{ 
-    waiting: 0,
-    confirm: 1,
-    making: 2,
-    preparing: 3,
-    shipping: 4
-  }, _prefix:true
+    入金待ち: 0,
+    入金確認: 1,
+    製作中: 2,
+    発送準備: 3,
+    発送済み: 4
+  }
   #waiting=入金待ち、confirm=入金確認、making=製作中、preparing=発送準備中、shipping=発送済み
 
 end
