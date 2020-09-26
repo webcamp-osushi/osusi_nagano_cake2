@@ -32,7 +32,7 @@ class Customers::OrdersController < Customers::Base
 	end
 
 	def create
-		@order = current_customer.orders.build(order_params) #saveメソッドじゃうまくいかなかったためbuild使用
+		@order = current_customer.orders.build(order_params) #newメソッドじゃうまくいかなかったためbuild使用
 		@order.save
 		# order_detailテーブルにも保存
 		current_customer.carts.each do |cart|
@@ -44,13 +44,12 @@ class Customers::OrdersController < Customers::Base
 			@order_detail.save
 		end
 		# 新しいアドレスを配送先に保存
-		@address_select = params[:address_select]
-		if @address_select == "新しいお届け先"
-			@address = Address.new(
-				customer_id: current_user_id,
-				postal_code: @order.postcode,
-				address: @order.address,
-				name: @order.name )
+		if params[:order][:address_select] == "新しいお届け先"
+			@address = Address.new()
+			 @address.customer_id = current_customer.id
+			 @address.postal_code = params[:order][:postalcode]
+			 @address.address = params[:order][:address]
+			 @address.name = params[:order][:name]
 			@address.save
 		end
 		current_customer.carts.destroy_all
