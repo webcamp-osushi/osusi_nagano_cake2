@@ -48,6 +48,11 @@ header {
   margin-top: 30px;
 }
 
+.Logolink {
+	text-decoration: none;
+	color: black;
+}
+
 .clearfix::after {
   content: "";
   display: block;
@@ -87,12 +92,25 @@ header {
 
 // product-top
 
+.product-top {
+	font-family: "Sawarabi Mincho";
+}
+
 .top-visual {
 	background-image: url(top.jpg);
 	background-size: cover;
 	width: 100%;
 	height: 350px;
 	posision: relative;
+}
+
+.top-box {
+	margin-top: 20px;
+}
+
+.top-box-link {
+	color: black;
+	border-bottom: solid 1px black;
 }
 
 .top-text {
@@ -103,19 +121,52 @@ header {
 
 .top-name {
 	font-size: 18px;
+	margin-top: 10px;
 }
 
 .top-price {
-	fontsize: 18px;
+	font-size: 18px;
+	margin-top: 5px;
 }
 
 // product-index
 
+.product-index{
+	font-family: "Sawarabi Mincho";
+}
+
+.product-box {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.product-box-link {
+	color: black;
+}
+
 .product-name {
 	font-size: 20px;
+	margin-bottom: 5px;
+	margin-top: 10px;
+	border-bottom: solid 1px black;
 }
 
 .product-price {
 	font-size: 20px;
+	border-bottom: solid 1px black;
+	margin-bottom: 5px;
 }
+
+//genrelist
+
+.table-hover {
+	font-size: 18px;
+}
+
+
+
+
+
+
+
 

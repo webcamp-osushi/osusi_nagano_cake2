@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container product-top">
 	<div class="row">
 		<%= render '/customers/products/genrelist', genres: @genres %>
 
@@ -22,11 +22,15 @@
 							<%= attachment_image_tag product, :image, :fill, 200, 200, fallback: "no_image.png", size: "200x200" %>
 							<% end %>
 						</div>
+						<%= link_to customers_product_path(product.id), class: "top-box-link" do %>
 						<div class="top-name">
 							<%= product.name %>
+						<% end %>
 						</div>
 						<div class="top-price">
-							<%= number_to_currency((BigDecimal(product.price) * BigDecimal("1.08")).ceil, :unit => "¥" ) %>(税込)
+							<%= link_to customers_product_path(product.id), class: "top-box-link" do %>
+							<%= number_to_currency((BigDecimal(product.price) * BigDecimal("1.08")).ceil, :unit => "¥", strip_insignificant_zeros: true ) %>(税込)
+							<% end %>
 						</div>
 					</div>
 				</div>
