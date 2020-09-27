@@ -1,4 +1,12 @@
-<h1>注文ありがとう</h1>
-
-<%= link_to "商品一覧へ", customers_products_path %>
-<%= link_to "注文履歴へ", customers_orders_path %>
+<h1 class="text-center">ご購入ありがとうございました！</h1>
+<p class="text-center" style="font-size:20px;">またのご利用お待ちしております</p>
+<img src="/assets/patissiere.png" alt="" class="center-block" style="height:300px;width:180px;">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-offset-7">
+			<%= link_to "商品一覧へ", customers_products_path, {class: "btn btn-primary",style: "margin-right:20px"} %>
+			<%= link_to "注文履歴へ", customers_orders_path, {class: "btn btn-primary"} %>
+			<div class="container">
+			</div>
+		</div>
+	</div>

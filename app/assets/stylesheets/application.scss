@@ -60,35 +60,30 @@ header {
 }
 // 共通ヘッダー部CSS終了
 
-// admin/product,genreのcss
+// admin/product,genre
 .alert{
 	color: red;
 }
 .field_with_errors {
 	display: contents;
 }
-
- .btn-circle {
-	width: 30px;
-	height: 30px;
-	text-align: center;
-	padding: 6px 0;
-	font-size: 12px;
-	line-height: 1.428571429;
-	border-radius: 15px;
-	}
 .text-top{
 	margin-top: 12%;
+	font-size: 20px;
 }
 .text{
 	margin-top: 50px;
+	font-size: 20px;
 }
 .text-bottom{
 	margin-top: 60px;
+	font-size: 20px;
 }
-// admin/product,genreのcss終わり
-
-
+// ボタン間の幅
+.btn_margin{
+	margin-top: 30px;
+	margin-right: 30px;
+}
 
 // product-top
 

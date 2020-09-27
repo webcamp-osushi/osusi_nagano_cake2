@@ -1,6 +1,7 @@
 <div class="container">
 	<%= form_for(@order, url: confirm_customers_orders_path) do |f| %>
 	<div class= "row">
+		<%= flash[:notice] %>
 		<h1>注文情報入力</h1>
 		<h3>支払い方法</h3>
 		<%= f.radio_button :_method, :クレジットカード %><%= f.label "クレジットカード" %></br>

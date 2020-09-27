@@ -28,12 +28,29 @@ class Customers::OrdersController < Customers::Base
 			@order.address = @customer_address.address
 			@order.name = @customer_address.name
 		when  "新しいお届け先"
+			@postal_code = params[:new_postal_code]
+            @address = params[:new_address]
+            @name = params[:new_name]
+            if @postal_code.blank?
+                flash[:notice] = '新しいお届け先を入力してください'
+                redirect_to new_customers_order_path
+            elsif @address.empty?
+                flash[:notice] = '新しいお届け先を入力してください'
+                redirect_to new_customers_order_path
+            elsif @name.empty?
+                flash[:notice] = '新しいお届け先を入力してください'
+                redirect_to new_customers_order_path
+            else
+                @order.postal_code = params[:new_postal_code]
+                @order.address = params[:new_address]
+                @order.name = params[:new_name]
+            end
 		end
 	end
 
 	def create
 		@order = current_customer.orders.build(order_params) #newメソッドじゃうまくいかなかったためbuild使用
-		@order.save
+	    @order.save
 		# order_detailテーブルにも保存
 		current_customer.carts.each do |cart|
 			@order_detail = OrderDetail.new(
@@ -43,21 +60,12 @@ class Customers::OrdersController < Customers::Base
 				order_id: @order.id )
 			@order_detail.save
 		end
-		# 新しいアドレスを配送先に保存
-		if params[:order][:address_select] == "新しいお届け先"
-			@address = Address.new()
-			 @address.customer_id = current_customer.id
-			 @address.postal_code = params[:order][:postalcode]
-			 @address.address = params[:order][:address]
-			 @address.name = params[:order][:name]
-			@address.save
-		end
 		current_customer.carts.destroy_all
 		redirect_to thanks_customers_orders_path
 	end
 
 	def index
-		@orders = current_customer.orders
+		@orders = current_customer.orders.order(id: "DESC")
 	end
 
 	def show

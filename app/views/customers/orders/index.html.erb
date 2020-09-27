@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
 		<h1>注文履歴一覧</h1>
+		<p><%= link_to "マイページに戻る", customer_path(current_customer), {class: "btn btn-success" } %></p>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -15,7 +16,7 @@
 			<tbody>
 				<% @orders.each do |order| %>
 				<tr>
-					<th><%= order.created_at.strftime('%Y/%m/%d')  %></th><%# 20xx/xx/xx表記%>
+					<th><%= order.created_at.strftime('%Y/%m/%d %H:%M')  %></th><%# 20xx/xx/xx表記%>
 					<th>〒<%= order.postal_code %><br>
 						<%= order.address %><br>
 						<%= order.name %>

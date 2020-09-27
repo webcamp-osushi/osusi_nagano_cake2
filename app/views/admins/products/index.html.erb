@@ -3,7 +3,7 @@
 		<div class="col-lg-10" >
 			<h1>商品一覧</h1>
 			<div class="text-right">
-			<button type="button" class="btn btn-circle"><%= link_to "＋", new_admins_product_path %></button>
+			<%= link_to "新規登録", new_admins_product_path, class:"btn btn-primary btn_margin"  %>
 		    </div>
 			<table class="table table-hover">
 				<thead>
@@ -31,7 +31,6 @@
 					<% end %>
 				</tbody>
 			</table>
-			<h3><%= link_to "ジャンル一覧", admins_genres_path %></h3>
 		</div>
 	</div>
 </div>

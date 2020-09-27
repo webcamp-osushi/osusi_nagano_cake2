@@ -5,6 +5,7 @@ class Order < ApplicationRecord
 	has_many :order_details, dependent: :destroy
 	belongs_to :customer
 
+	validates :_method, inclusion: {in:[クレジットカード, 銀行振込]}
 
 
 	# 商品合計
