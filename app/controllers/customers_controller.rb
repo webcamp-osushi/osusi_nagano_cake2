@@ -30,7 +30,7 @@ end
 def leave
 	@customer = Customer.find(params[:id])
 
-	@customer.update(is_deleted: "Available")
+	@customer.update(is_deleted: "Invalid")
    
     reset_session
    

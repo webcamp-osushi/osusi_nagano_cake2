@@ -28,6 +28,7 @@ class Customers::OrdersController < Customers::Base
 			@order.address = @customer_address.address
 			@order.name = @customer_address.name
 		when  "新しいお届け先"
+
 		end
 	end
 
@@ -44,13 +45,13 @@ class Customers::OrdersController < Customers::Base
 			@order_detail.save
 		end
 		# 新しいアドレスを配送先に保存
-		if params[:order][:address_select] == "新しいお届け先"
-			@address = Address.new()
+		 if params[:address_select] == "新しいお届け先" #ここが動いてない？
+			 @address = Address.new()
 			 @address.customer_id = current_customer.id
-			 @address.postal_code = params[:order][:postalcode]
+			 @address.postal_code = params[:order][:postal_code]
 			 @address.address = params[:order][:address]
 			 @address.name = params[:order][:name]
-			@address.save
+			 @address.save
 		end
 		current_customer.carts.destroy_all
 		redirect_to thanks_customers_orders_path
