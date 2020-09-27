@@ -1,11 +1,11 @@
-<%= link_to "一覧に戻る", admins_products_path %>
 <div class ="container">
 	<div class="row">
 		<div class="col-lg-6">
+			<%= flash[:notice] %>
 			<h1>商品詳細</h1>
 			<div class= "img_area">
 
-				<%= image_tag attachment_url(@product, :image, :fill, 300, 300, format: "jpg", fallback: "no-img.jpg") %>
+				<%= image_tag attachment_url(@product, :image, :fill, 350, 350, format: "jpg", fallback: "no-img.jpg") %>
         
 			</div>
 		</div>
@@ -22,8 +22,9 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-4">
-				<button class="btn btn-primary btn-lg text-bottom"><%= link_to "編集する", edit_admins_product_path(@product), :style=>"color:white;" %></button>
+			<div class="col-lg-offset-4">
+				<%= link_to "一覧に戻る", admins_products_path, class:"btn btn-primary btn_margin"  %>
+				<%= link_to "編集する", edit_admins_product_path(@product), class:"btn btn-primary btn_margin" %>
 			</div>
 		</div>
 	</div>
