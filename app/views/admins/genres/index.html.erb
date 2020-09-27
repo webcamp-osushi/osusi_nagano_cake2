@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-10">
+			<%= flash[:notice] %>
 			<h1>ジャンル一覧・追加</h1>
 			<%= form_for(@genre, url: {controller: "genres", action: "create"}) do |f| %>
 			<!-- エラー文表示 -->
