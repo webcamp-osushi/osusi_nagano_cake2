@@ -14,9 +14,12 @@ class Admins::CustomersController < Admins::Base
 
   def update
     @customer = Customer.find(params[:id])
-    if @customer.update(customer_params)
-    redirect_to customer_path(@customer.id)
-    flash[:notice] = "You have updated customer successfully."
+    if params[:customer][:is_deleted]
+       @customer.update(is_deleted: params[:customer][:is_deleted])
+       redirect_to customer_path(@customer.id)
+    elsif @customer.update(customer_params)
+      flash[:notice] = "You have updated customer successfully."
+      redirect_to customer_path(@customer.id)
     else
       render "edit"
     end
@@ -24,7 +27,7 @@ class Admins::CustomersController < Admins::Base
   
   private
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :password, :address, :postal_code, :telephone_number, :is_deleted)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :password, :address, :postal_code, :telephone_number)
   end
 
 

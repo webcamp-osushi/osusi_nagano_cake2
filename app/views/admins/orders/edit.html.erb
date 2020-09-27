@@ -5,7 +5,7 @@
         <h2>注文履歴詳細</h2>
     <br>
     <div class="col-xs-8">
-        <table class="table">
+        
           <div class="order-info">
             <div class="customer-name">
               <label class="col-sm-4 control-label">購入者</label>
@@ -38,6 +38,7 @@
           <br>
           <br>
           <div class="order-detail">
+            <table class="table">
             <thead>
               <tr>
                 <th>商品名</th>
@@ -47,26 +48,25 @@
                 <th>製作ステータス</th>
                 <th colspan="2"></th>
               </tr>
-             </thead>
-             <tbody>
-               <!-- order each文挿入 -->
-               <% @order.order_details.each do |order_detail|  %>
-                <tr>
-                  <td><%= order_detail.product.name %></td>
-                  <td><%= order_detail.price %></td>
-                  <td><%= order_detail.amount %></td>
-                  <td><%= order_detail.subtotal_price %></td>
-                  <!-- order detailの製作ステータスのみ表示不可
-                    また、上記オーダー変更時の相互自動更新についても反映必要あり-->
-                    <%= form_for(order_detail,url:admins_order_detail_path(order_detail)) do |f| %>
-                      <td><%= f.select :making_status,OrderDetail.making_statuses.keys.map {|k| [("#{k}"), k]} %></td>
-                    <td> <%= f.submit '更新', class:"col-xs-12 btn-primary btn-sm " %></td>
-                    <% end %>
-                </tr>
-              <% end %>
-             </tbody>
-          </div>
-        </table>
+            </thead>
+            <tbody>
+             <% @order.order_details.each do |order_detail|  %>
+              <tr>
+                <td><%= order_detail.product.name %></td>
+                <td><%= order_detail.price %></td>
+                <td><%= order_detail.amount %></td>
+                <td><%= order_detail.subtotal_price %></td>
+                <td>
+                  <%= form_for(order_detail,url:admins_order_detail_path(order_detail)) do |f| %>
+                    <%= f.select :making_status,OrderDetail.making_statuses.keys.map {|k| [("#{k}"), k]} %>
+                    <%= f.submit '更新', class:"col-xs-12 btn-primary btn-sm " %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   </div>

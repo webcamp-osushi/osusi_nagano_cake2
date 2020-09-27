@@ -7,7 +7,6 @@ class Customers::OrdersController < Customers::Base
 	end
 
 	def confirm
-		@customer_address =Address.find(params[:address][:id])
 		@order = current_customer.orders.build(order_params)
 		@order.shipping_cost = 800
 		# カート内合計金額。cartコントローラー,indexアクションより引用
@@ -24,6 +23,7 @@ class Customers::OrdersController < Customers::Base
 			@order.address = current_customer.address
 			@order.name = current_customer.last_name + current_customer.first_name
 		when "登録済み住所から選択"
+			@customer_address =Address.find(params[:address][:id])
 			@order.postal_code = @customer_address.postal_code
 			@order.address = @customer_address.address
 			@order.name = @customer_address.name
