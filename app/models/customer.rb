@@ -9,9 +9,10 @@ class Customer < ApplicationRecord
   has_many :addresses, dependent: :destroy
   
   enum is_deleted: {Available: false, Invalid: true}
-    def active_for_authentication?
-        super && (self.is_deleted === "Available")
- end
+
+   def active_for_authentication?
+       super && (self.is_deleted === "Available")
+   end
 end
     
 
