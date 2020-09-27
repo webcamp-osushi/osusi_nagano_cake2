@@ -21,6 +21,10 @@ class Customers::OrdersController < Customers::Base
 			@order.total_price += ((BigDecimal(cart.product.price) * BigDecimal("1.08") * cart.amount).ceil)
 		# カート内合計金額終わり
 		end
+		#2000円以上で送料無料
+		if @order.total_price >= 2000
+			@order.shipping_cost = 0
+		end
 
 		case params[:address_select] #選択肢したaddressによって条件分岐
 		when "ご自身の住所"

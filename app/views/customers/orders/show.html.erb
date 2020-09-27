@@ -38,7 +38,13 @@
 					</tr>
 					<tr>
 						<th>配送料</th>
-						<td><%= @order.shipping_cost %>円</td>
+						<%# 注文2000円以上で送料無料 %>
+						<td><% if @order.product_sum_price.ceil <= 2000 %>
+							<%= @order.shipping_cost %>円
+							<% else %>
+							<%= @order.shipping_cost = 0 %>円
+							<% end %>
+						</td>
 					</tr>
 					<tr>
 						<th>ご請求額</th>
