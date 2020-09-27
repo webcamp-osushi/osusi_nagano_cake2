@@ -158,8 +158,37 @@ header {
 	font-size: 18px;
 }
 
+// cart
 
+.product-amount {
+	margin-top: 40px;
+}
 
+.select-amount p {
+	border-bottom: solid 1px black;
+	float: left;
+	margin-right: 5px;
+}
+
+.select-amount {
+	overflow: hidden;
+}
+
+.cart-in {
+	margin-top: 10px;
+}
+
+.product-info h2 {
+	margin-bottom: 20px;
+}
+
+.product-info p {
+	margin-bottom: 50px;
+}
+
+.product-info h3 {
+	text-align: right;
+}
 
 
 

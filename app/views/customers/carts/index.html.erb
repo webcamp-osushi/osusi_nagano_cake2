@@ -33,12 +33,12 @@
 					<td scope="row"><%= number_to_currency((BigDecimal(cart.product.price) * BigDecimal("1.08")).ceil, :unit => "¥", strip_insignificant_zeros: true ) %>(税込)</td>
 					<td scope="row">
 						<%= form_for cart, url: customers_cart_path(cart), method: :patch do |f| %>
-						<%= f.number_field :amount %>
+						<%= f.number_field :amount,min:1 %>
 						<%=f.submit "変更" %>
 						<% end %>
 					</td>
 					<td scope="row"><%= number_to_currency((BigDecimal(cart.product.price) * BigDecimal("1.08") * cart.amount).ceil, :unit => "¥", strip_insignificant_zeros: true ) %>(税込)</td>
-					<td scope="row"><%= link_to "削除する", customers_carts_path(cart), method: :delete %></td>
+					<td scope="row"><%= link_to "削除する", customers_cart_path(cart), method: :delete %></td>
 				</tr>
 			</tbody>
 			<% end %>
