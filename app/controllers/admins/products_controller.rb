@@ -1,6 +1,8 @@
 class Admins::ProductsController < Admins::Base
 	def top
-		@orders = Order.all
+		# today = Date.todayじゃだめ？
+		today = Date.today.beginning_of_day..Date.today.end_of_day #今日の０時から23時59分を取得
+		@orders = Order.where(created_at: today)
 	end
 
 	def new

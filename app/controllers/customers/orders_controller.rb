@@ -58,7 +58,7 @@ class Customers::OrdersController < Customers::Base
 	end
 
 	def index
-		@orders = current_customer.orders
+		@orders = current_customer.orders.order(id: "DESC")
 	end
 
 	def show
