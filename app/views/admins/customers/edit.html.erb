@@ -26,8 +26,6 @@
           <label><%= f.radio_button :is_deleted, "Invalid" %>退会済み</label>
         </div>
         <br>
-        <p>会員ステータス</p><label><%= f.radio_button :is_deleted, "Available" %>有効</label>&emsp;<label><%= f.radio_button :is_deleted, "Invalid" %>退会済み</label>
-
         <div class="col-lg-4">
           <%= f.submit "変更を保存", class: "btn btn-primary", data: { confirm: '変更しますか？' } %>
         </div>

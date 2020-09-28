@@ -18,6 +18,9 @@ class Admins::OrdersController < Admins::Base
       @order.update(status: 1)
       @order_detail.update(making_status: 1)
     redirect_to admins_orders_path
+    elsif params[:order][:status] == "発送済み"
+      @order.update(status: 4)
+    redirect_to admins_orders_path
     else
       render "edit"
     end
