@@ -9,10 +9,10 @@ class OrderDetail < ApplicationRecord
     製作中: 2,
     製作完了: 3
   }, _prefix: true
+
   # 小計
-  
   def subtotal_price
-		BigDecimal(price) * amount
+		BigDecimal(price) * amount * BigDecimal("1.08")
 	end
 
 end
