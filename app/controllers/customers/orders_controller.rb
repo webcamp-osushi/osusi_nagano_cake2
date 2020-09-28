@@ -1,9 +1,14 @@
 class Customers::OrdersController < Customers::Base
 
 	def new
+		@carts = Cart.where(customer_id: current_customer.id)
+		if @carts.empty?
+			redirect_to customers_carts_path, alert: 'カートが空です'
+		else
 		@order = Order.new
 		@customer = current_customer
 		@addresses = Address.where(customer_id: @customer.id)
+	    end
 	end
 
 	def confirm
@@ -15,6 +20,10 @@ class Customers::OrdersController < Customers::Base
 		@cart.each do |cart|
 			@order.total_price += ((BigDecimal(cart.product.price) * BigDecimal("1.08") * cart.amount).ceil)
 		# カート内合計金額終わり
+		end
+		#2000円以上で送料無料
+		if @order.total_price >= 2000
+			@order.shipping_cost = 0
 		end
 
 		case params[:address_select] #選択肢したaddressによって条件分岐

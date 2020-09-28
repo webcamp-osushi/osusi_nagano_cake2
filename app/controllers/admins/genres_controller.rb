@@ -3,7 +3,7 @@ class Admins::GenresController < Admins::Base
 		@genre = Genre.new(genre_params)
 		@genres = Genre.all
 		if @genre.save
-			redirect_to("/admins/genres")
+			redirect_to admins_genres_path, notice: 'ジャンルを追加しました'
 		else
 			render "index"
 		end
@@ -21,7 +21,7 @@ class Admins::GenresController < Admins::Base
 	def update
 		@genre = Genre.find(params[:id])
 		if @genre.update(genre_params)
-			redirect_to("/admins/genres")
+			redirect_to admins_genres_path, notice: 'ジャンルを修正しました'
 		else
 			render "edit"
 		end
