@@ -5,6 +5,6 @@ class Cart < ApplicationRecord
 	validates :amount, presence: true
 	
 	def subtotal_price
-		product.price * amount
+		BigDecimal(product.price) * amount
 	end
 end

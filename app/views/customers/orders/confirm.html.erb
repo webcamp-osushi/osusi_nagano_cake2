@@ -12,9 +12,9 @@
 				<% current_customer.carts.each do |c| %>
 				<tr>
 					<td><%= c.product.name %></td>
-					<td><%= (c.product.price * 1.08).floor %>円</td>
+					<td><%= (c.product.price * 1.08).ceil %>円</td>
 					<td><%= c.amount %></td>
-					<td><%= (c.subtotal_price * 1.08).floor %>円</td>
+					<td><%= (c.subtotal_price * 1.08).ceil %>円</td>
 				</tr>
 				<% end %>
 			</tbody>

@@ -5,7 +5,7 @@ class Order < ApplicationRecord
 	has_many :order_details, dependent: :destroy
 	belongs_to :customer
 
-	validates :_method, inclusion: {in:[クレジットカード, 銀行振込]}
+	
 
 
 	# 商品合計
@@ -18,7 +18,7 @@ class Order < ApplicationRecord
 	end
 
 
-  enum status:{ 
+  enum status:{
     入金待ち: 0,
     入金確認: 1,
     製作中: 2,

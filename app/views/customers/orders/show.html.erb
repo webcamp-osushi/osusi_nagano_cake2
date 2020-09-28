@@ -63,7 +63,7 @@
 					<% @order.order_details.each do |order_detail| %>
 					<tr>
 						<td><%= order_detail.product.name %></td>
-						<td><%= number_to_currency(BigDecimal(order_detail.product.price) * (BigDecimal("1.08")),:format => "%n%u", :unit => "円", strip_insignificant_zeros: true) %></td>
+						<td><%= number_to_currency(BigDecimal(order_detail.product.price * BigDecimal("1.08").ceil,:format => "%n%u", :unit => "円", strip_insignificant_zeros: true) %></td>
 						<td><%= order_detail.amount %></td>
 						<td>
 							<%= order_detail.subtotal_price.ceil %>円</td><%#orderモデルに定義%>

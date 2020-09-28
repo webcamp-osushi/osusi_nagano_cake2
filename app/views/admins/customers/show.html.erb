@@ -9,7 +9,7 @@
           <tr>
             <th>顧客ID</th>
             <th><%= @customer.id %></th>
-            <th><% if @customer.is_deleted == true %>退会済み
+            <th><% if @customer.is_deleted == "Invalid" %>退会済み
                 <% else %>有効
                 <% end %></th>
           </tr>

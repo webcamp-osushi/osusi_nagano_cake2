@@ -14,7 +14,7 @@
         <p>電話番号</p><%= f.text_field :telephone_number %>
         <br>
         <br>
-        <p>会員ステータス</p><label><%= f.radio_button :is_deleted, 0 %>有効</label>&emsp;<label><%= f.radio_button :is_deleted, 1 %>退会済み</label>
+        <p>会員ステータス</p><label><%= f.radio_button :is_deleted, "Available" %>有効</label>&emsp;<label><%= f.radio_button :is_deleted, "Invalid" %>退会済み</label>
       </div>
       <br>
       <div class="col-lg-4">
