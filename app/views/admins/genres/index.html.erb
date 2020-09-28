@@ -1,14 +1,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-10">
+			<%= flash[:notice] %>
 			<h1>ジャンル一覧・追加</h1>
-			<h3><%= link_to "商品一覧", admins_products_path %></h3>
-
 			<%= form_for(@genre, url: {controller: "genres", action: "create"}) do |f| %>
 			<!-- エラー文表示 -->
 			<%= render 'layouts/error_form', model: f.object %>
 			<div class="new_genre_form">
-			<p>ジャンル</p><%= f.text_field :name %><label><%= f.radio_button :is_active, "true" %>有効</label><label><%= f.radio_button :is_active, "false" %>無効</label><button class="btn btn-primary">追加</button>
+			<%= f.label "ジャンル" %> <%= f.text_field :name %><label><%= f.radio_button :is_active, "true" %>有効</label><label><%= f.radio_button :is_active, "false" %>無効</label><button class="btn btn-primary">追加</button>
 		    </div>
 			<% end %>
 
