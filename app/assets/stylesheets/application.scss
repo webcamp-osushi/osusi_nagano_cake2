@@ -156,6 +156,30 @@ header {
 	margin-bottom: 5px;
 }
 
+//product-show
+.product-show {
+	font-family: "Sawarabi Mincho";
+}
+
+.select-amount {
+	float: left;
+	margin-right: 20px;
+}
+
+.cart-in {
+	overflow: hidden;
+}
+
+.product-info p {
+	font-size: 16px;
+	margin-top: 20px;
+}
+
+.select-amount p {
+	font-size: 14px;
+}
+
+
 //genrelist
 
 .table-hover {
@@ -163,6 +187,28 @@ header {
 }
 
 // cart
+
+.cart-index {
+	font-family: "Sawarabi Mincho";
+}
+
+.cart-empty {
+	font-size: 18px;
+}
+
+.cart-product {
+	margin-top: 40px;
+	font-size:18px;
+}
+
+.cart-date {
+	margin-top: 30px;
+	font-size: 22px;
+}
+
+.cart-enter {
+	margin-top: 30px;
+}
 
 .product-amount {
 	margin-top: 40px;
@@ -192,6 +238,16 @@ header {
 
 .product-info h3 {
 	text-align: right;
+}
+
+//address-index
+
+.address-index h2 {
+	margin-bottom: 20px;
+}
+
+.address-table {
+	margin-top: 30px;
 }
 
 

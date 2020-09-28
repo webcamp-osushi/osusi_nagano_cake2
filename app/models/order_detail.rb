@@ -12,7 +12,7 @@ class OrderDetail < ApplicationRecord
   # 小計
   
   def subtotal_price
-		price * amount * 1.08
+		BigDecimal(price) * amount
 	end
 
 end

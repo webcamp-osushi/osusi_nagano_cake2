@@ -18,7 +18,7 @@ class Customers::OrdersController < Customers::Base
 		@order.total_price = 0
 	    @cart = Cart.where(customer_id: current_customer.id)
 		@cart.each do |cart|
-			@order.total_price += ((BigDecimal(cart.product.price) * BigDecimal("1.08") * cart.amount).ceil)
+			@order.total_price += ((BigDecimal(cart.product.price) * BigDecimal("1.08")).ceil) * cart.amount
 		# カート内合計金額終わり
 		end
 		#2000円以上で送料無料
@@ -37,7 +37,6 @@ class Customers::OrdersController < Customers::Base
 			@order.address = @customer_address.address
 			@order.name = @customer_address.name
 		when  "新しいお届け先"
-			
 		end
 	end
 
@@ -53,7 +52,6 @@ class Customers::OrdersController < Customers::Base
 				order_id: @order.id )
 			@order_detail.save
 		end
-		# 新しいアドレスを配送先に保存
 		 if params[:address_select] == "新しいお届け先" #ここが動いてない？
 			 @address = Address.new()
 			 @address.customer_id = current_customer.id

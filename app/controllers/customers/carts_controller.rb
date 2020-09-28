@@ -5,7 +5,7 @@ class Customers::CartsController < Customers::Base
 		@cart = Cart.where(customer_id: current_customer.id)
 		@total_price = 0
 		@cart.each do |cart|
-			@total_price += ((BigDecimal(cart.product.price) * BigDecimal("1.08") * cart.amount).ceil)
+			@total_price += ((BigDecimal(cart.product.price) * BigDecimal("1.08")).ceil) * cart.amount
 		end
 
 	end

@@ -6,6 +6,7 @@ class Order < ApplicationRecord
 	belongs_to :customer
 
 
+
 	# 商品合計
 	def product_sum_price
 		total = 0
@@ -16,7 +17,7 @@ class Order < ApplicationRecord
 	end
 
 
-  enum status:{ 
+  enum status:{
     入金待ち: 0,
     入金確認: 1,
     製作中: 2,
