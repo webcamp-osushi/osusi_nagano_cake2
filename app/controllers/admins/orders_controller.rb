@@ -2,11 +2,9 @@ class Admins::OrdersController < Admins::Base
   def index
     @orders = Order.all
   end
-
   def edit
     @order = Order.find(params[:id])
   end
-
   def update
     @order = Order.find(params[:id])
     @order_detail = @order.order_details
@@ -26,7 +24,6 @@ class Admins::OrdersController < Admins::Base
     end
     flash[:notice] = "You have updated customer successfully."
   end
-
   private
   def order_params
     params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_cost, :total_price, :payment_method, :status)
