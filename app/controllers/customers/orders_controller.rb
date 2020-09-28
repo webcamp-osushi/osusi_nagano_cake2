@@ -28,23 +28,7 @@ class Customers::OrdersController < Customers::Base
 			@order.address = @customer_address.address
 			@order.name = @customer_address.name
 		when  "新しいお届け先"
-			@postal_code = params[:new_postal_code]
-            @address = params[:new_address]
-            @name = params[:new_name]
-            if @postal_code.blank?
-                flash[:notice] = '新しいお届け先を入力してください'
-                redirect_to new_customers_order_path
-            elsif @address.empty?
-                flash[:notice] = '新しいお届け先を入力してください'
-                redirect_to new_customers_order_path
-            elsif @name.empty?
-                flash[:notice] = '新しいお届け先を入力してください'
-                redirect_to new_customers_order_path
-            else
-                @order.postal_code = params[:new_postal_code]
-                @order.address = params[:new_address]
-                @order.name = params[:new_name]
-            end
+			
 		end
 	end
 
