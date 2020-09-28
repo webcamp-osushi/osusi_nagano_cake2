@@ -21,7 +21,7 @@ class Order < ApplicationRecord
     入金待ち: 0,
     入金確認: 1,
     製作中: 2,
-    発送準備: 3,
+    発送準備中: 3,
     発送済み: 4
   }
   #waiting=入金待ち、confirm=入金確認、making=製作中、preparing=発送準備中、shipping=発送済み
