@@ -23,8 +23,6 @@
                   <% end %>
                 </td>
                 <td><%= order.name %></td>
-                <!-- orderには総数のカラムがないのが原因？カスタマーのオーダーではカレントカスタマーのカートから数をもってきているがここはそれでは不可
-                order_detailの数を分解して -->
                 <% amount = 0 %>
                 <% order.order_details.each do |order_detail| %>
                    <% amount += order_detail.amount %>
