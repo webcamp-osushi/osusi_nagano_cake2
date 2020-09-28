@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   root "customers/products#top"
   get "about" => "customers/products#about"
-  # devise_for :customers, class_name: "Customers::Customer"
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',

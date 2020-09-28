@@ -10,7 +10,11 @@ class Admins::OrdersController < Admins::Base
   def update
     @order = Order.find(params[:id])
     @order_detail = @order.order_details
-    if params[:order][:status] == "入金確認"
+    if params[:order][:status] == "入金待ち"
+      @order.update(status: 0)
+      @order_detail.update(making_status: 0)
+    redirect_to admins_orders_path
+    elsif params[:order][:status] == "入金確認"
       @order.update(status: 1)
       @order_detail.update(making_status: 1)
     redirect_to admins_orders_path

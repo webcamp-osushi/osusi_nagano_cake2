@@ -16,10 +16,10 @@ class Admins::CustomersController < Admins::Base
     @customer = Customer.find(params[:id])
     if params[:customer][:is_deleted]
        @customer.update(is_deleted: params[:customer][:is_deleted])
-       redirect_to customer_path(@customer.id)
+       redirect_to admins_customers_path
     elsif @customer.update(customer_params)
       flash[:notice] = "You have updated customer successfully."
-      redirect_to customer_path(@customer.id)
+      redirect_to admins_customers_path
     else
       render "edit"
     end
