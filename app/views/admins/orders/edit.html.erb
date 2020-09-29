@@ -1,0 +1,76 @@
+<p class="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <section class="order-detail">
+        <h2>注文履歴詳細</h2>
+    <br>
+    <div class="col-xs-8">
+        
+          <div class="order-info">
+            <div class="customer-name">
+              <label class="col-sm-4 control-label">購入者</label>
+              <label class="col-sm- control-label">
+              <%= @order.name %></label>
+            </div>
+            <br>
+            <div class="customer-address">
+              <label class="col-sm-4 control-label">配送先</label>
+              <label class="col-sm- control-label">
+              <%= @order.address %></label>
+            </div>
+            <br>
+            <div class="pay-method">
+              <label class="col-sm-4 control-label">支払方法</label>
+              <label class="col-sm- control-label">
+              <%= @order._method %></label>
+            </div>
+            <br>
+            <div class="order-status">
+              <label class="col-sm-4 control-label">注文ステータス</label>
+              <%= form_for(@order,url:admins_order_path) do |f| %>
+              <%= f.select  :status, Order.statuses.keys.map {|k| [("　#{k}"), k]} %>
+              <br>
+              <%= f.submit '更新', class:"col-xs-2 btn-primary btn-sm " %>
+              <% end %>
+            </div>
+          </div>
+          <br>
+          <br>
+          <br>
+          <div class="order-detail">
+            <table class="table">
+            <thead>
+              <tr>
+                <th>商品名</th>
+                <th>単価（税抜）</th>
+                <th>数量</th>
+                <th>小計</th>
+                <th>製作ステータス</th>
+                <th colspan="2"></th>
+              </tr>
+            </thead>
+            <tbody>
+             <% @order.order_details.each do |order_detail|  %>
+              <tr>
+                <td><%= order_detail.product.name %></td>
+                <td><%= order_detail.price %></td>
+                <td><%= order_detail.amount %></td>
+                <td><%= order_detail.subtotal_price.ceil %></td>
+                <td>
+                  <%= form_for(order_detail,url:admins_order_detail_path(order_detail)) do |f| %>
+                    <%= f.select :making_status,OrderDetail.making_statuses.keys.map {|k| [("#{k}"), k]} %>
+                    <%= f.submit '更新', class:"col-xs-8 btn-primary btn-sm " %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+    

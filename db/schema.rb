@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_053648) do
+ActiveRecord::Schema.define(version: 2020_09_25_112845) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "customers_id"
+    t.integer "customer_id"
     t.string "postal_code"
     t.string "address"
     t.string "name"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_053648) do
     t.integer "order_id"
     t.integer "price"
     t.integer "amount"
-    t.integer "making_status"
+    t.integer "making_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_053648) do
     t.integer "shipping_cost"
     t.integer "total_price"
     t.integer "_method"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

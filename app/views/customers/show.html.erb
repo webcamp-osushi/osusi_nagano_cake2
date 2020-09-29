@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="row">
+		<h2>マイページ</h2>
+
+		<%= link_to "編集", edit_customer_path(@customer.id)%>
+		<%= link_to "パスワード変更",  edit_customer_registration_path %>
+
+		<table class="table">
+			<thead class="thead-lignt">
+
+				<tr>
+					<th>名前</th>
+					<th><%= @customer.last_name %><%= @customer.first_name %></th>
+				</tr>
+				<tr>
+					<th>カナ</ht>
+						<th><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></th>
+					</tr>
+					<tr>
+						<th>郵便番号</th>
+						<th><%= @customer.postal_cord %></th>
+					</tr>
+					<tr>
+						<th>住所</th>
+						<th><%= @customer.address %></th>
+					</tr>
+					<tr>
+						<th>電話番号</th>
+						<th><%= @customer.telephone_number %></th>
+					</tr>
+					<tr>
+						<th>メールアドレス</th>
+						<th><%= @customer.email %></th>
+					</tr>
+
+
+				</thead>
+			</table>
+			<p>注文履歴<%= link_to "一覧を見る", customers_orders_path, { class: "btn btn-primary" }%></p>
+			<p>配送先<%= link_to "一覧を見る", customers_addresses_path(current_customer), { class: "btn btn-primary" } %></p>
+		</div>
+	</div>

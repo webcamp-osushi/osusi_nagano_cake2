@@ -1,0 +1,27 @@
+<div class="container">
+	<%= form_for(@product, url: {controller: "products", action: "create"}) do |f| %>
+	<!-- エラーメッセージ 表示 -->
+	<%= render 'layouts/error_form', model: f.object %>
+	<div class="row">
+		<h1>商品新規登録</h1>
+		<div class= "col-md-4">
+			<%#<%= attachment_image_tag @product, :image, class: "img-square", fallback: "no_image.png", size:"300x300" %>
+			<%= f.attachment_field :image %>
+		</div>
+		<div class= "col-md-8">
+			<p>商品名</p><%= f.text_field :name %>
+			<p>商品説明</p><%= f.text_area :introduction %>
+			<p>ジャンル</p> <%= f.collection_select :genre_id, Genre.where(is_active: true), :id, :name, include_blank: "--選択して下さい--" %>
+			<p>税抜き価格</p><%= f.text_field :price %>円
+			<p>販売ステータス</p><%= f.select :is_active, [['販売中',true],['販売停止中',false]], { include_blank: '--選択してください--' } %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="text-right">
+				<button class="btn btn-primary">新規登録</button>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</div>

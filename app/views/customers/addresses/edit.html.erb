@@ -1,0 +1,25 @@
+<div class="container">
+
+	<h2>配送先編集</h2>
+
+		<%= form_for @address, url:customers_address_path do |f| %>
+		<div class="col-xs-10">
+		<table class="table">
+			<tr>
+				<td><p>郵便番号</p><%= f.text_field :postal_code, class: "col-xs-4" %></td>
+			</tr>
+			<tr>
+				<td><p>住所</p><%= f.text_field :address, class: "col-xs-8" %></td>
+			</tr>
+			<tr>
+				<td><p>宛名</p><%= f.text_field :name, class: "col-xs-4" %></td>
+			</tr>
+		</table>
+		</div>
+			<div class="address_btn">
+			<%= f.submit "編集する", class: "btn btn-primary" %>
+			</div>
+
+		<% end %>
+</div>
+

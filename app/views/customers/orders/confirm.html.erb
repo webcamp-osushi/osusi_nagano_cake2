@@ -1,0 +1,82 @@
+<div class="container">
+	<div class="row">
+		<h1>注文確認画面</h1>
+		<table class="table table-bordered">
+			<thead>
+				<th>商品名</th>
+				<th>単価(税込)</th>
+				<th>数量</th>
+				<th>小計</th>
+			</thead>
+			<tbody>
+				<% current_customer.carts.each do |c| %>
+				<tr>
+					<td><%= c.product.name %></td>
+					<td><%= (c.product.price * 1.08).ceil %>円</td>
+					<td><%= c.amount %></td>
+					<td><%= (c.subtotal_price * 1.08).ceil %>円</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="row">
+		<div class="col-lg-6">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>送料(2000円以上で無料)</th>
+						<td><%= @order.shipping_cost %>円</td>
+					</tr>
+					<tr>
+						<th>商品合計</th>
+						<td><%= @order.total_price %>円</td>
+					　　</tr>
+					　　<tr>
+						<th>請求金額</th>
+						<td><%= @order.total_price + @order.shipping_cost %>円</td>
+					　　</tr>
+				　　</tbody>
+			　　</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>支払い方法</th>
+						<td><%= @order._method %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>お届け先</th>
+						<td>〒<%= @order.postal_code %></td>
+						<td><%= @order.address %></td>
+						<td><%= @order.name %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+
+		<div class="col-lg-offset-6">
+			<%= form_for @order, :url => {controller: "orders", action: "create"} do |f| %>
+			<%= f.hidden_field :postal_code, value: @order.postal_code %>
+			<%= f.hidden_field :total_price, value: @order.total_price %>
+			<%= f.hidden_field :address, value: @order.address %>
+			<%= f.hidden_field :name, value: @order.name %>
+			<%= f.hidden_field :_method, value: @order._method %>
+			<%= f.submit "購入を確定する", class:"btn btn-primary" %>
+			<% end %>
+		</div>
+	</div>
+</div>

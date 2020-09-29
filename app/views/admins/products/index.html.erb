@@ -1,0 +1,36 @@
+<div class="container" >
+	<div class="row" >
+		<div class="col-lg-10" >
+			<h1>商品一覧</h1>
+			<div class="text-right">
+			<%= link_to "新規登録", new_admins_product_path, class:"btn btn-primary btn_margin"  %>
+		    </div>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>商品ID</th>
+						<th>商品名</th>
+						<th>税抜価格</th>
+						<th>ジャンル</th>
+						<th>ステータス</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @products.each do |product| %>
+					<tr>
+						<td><%= product.id %></td>
+						<td><%= link_to product.name, admins_product_path(product) %></td>
+						<td><%= product.price %></td>
+						<td><%= product.genre.name %></td>
+						<td><% if product.is_active == true %>販売中
+							<% else %>販売停止中
+							<% end %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
